@@ -17,6 +17,9 @@ public class Game {
 
         Grid grid = new Grid();
         grid.init();
+
+        MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
+        myKeyboard.init();
     }
 
     public void start() {}
