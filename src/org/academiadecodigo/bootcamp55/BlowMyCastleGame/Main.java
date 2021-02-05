@@ -9,6 +9,8 @@ public class Main {
         game.init();
         game.start();
 
+        System.out.println("This is a conflict test.");
+
     }
 
 }
