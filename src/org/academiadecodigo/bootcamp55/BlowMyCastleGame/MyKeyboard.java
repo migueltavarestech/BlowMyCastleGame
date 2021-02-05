@@ -10,8 +10,6 @@ public class MyKeyboard implements KeyboardHandler {
     private Keyboard keyboard;
     private Player player1;
     private Player player2;
-    private Player player4;
-    private Player player3;
 
     public MyKeyboard(Player player1, Player player2) {
         keyboard = new Keyboard(this);
