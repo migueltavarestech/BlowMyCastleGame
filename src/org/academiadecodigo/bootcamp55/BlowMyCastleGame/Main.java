@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Game;
+package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
 public class Main {
 
