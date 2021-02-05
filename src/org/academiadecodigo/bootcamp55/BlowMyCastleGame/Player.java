@@ -8,8 +8,8 @@ public class Player {
     private Picture playerAvatar;
 
     public Player() {
-        playerAvatar = new Picture(0,0,"playerAvatar.png");
-        playerAvatar.draw();
+         playerAvatar = new Picture(0,0,"playerAvatar.png");
+         playerAvatar.draw();
     }
 
     public void moveRight() { playerAvatar.translate(10,0); }
