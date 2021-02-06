@@ -61,6 +61,7 @@ public class MyKeyboard implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent e) {
+
         if (e.getKey() == KeyboardEvent.KEY_RIGHT) {
             player2.moveRight();
         } else if (e.getKey() == KeyboardEvent.KEY_LEFT) {
