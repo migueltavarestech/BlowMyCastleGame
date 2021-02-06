@@ -10,7 +10,6 @@ public class MyKeyboard implements KeyboardHandler {
     private Keyboard keyboard;
     private Player player1;
     private Player player2;
-    private Player player4;
 
     public MyKeyboard(Player player1, Player player2) {
         keyboard = new Keyboard(this);
@@ -62,6 +61,7 @@ public class MyKeyboard implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent e) {
+
         if (e.getKey() == KeyboardEvent.KEY_RIGHT) {
             player2.moveRight();
         } else if (e.getKey() == KeyboardEvent.KEY_LEFT) {
