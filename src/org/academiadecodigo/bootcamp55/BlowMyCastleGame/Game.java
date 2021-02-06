@@ -8,8 +8,6 @@ public class Game {
     private Player player2;
 
     public Game() {
-        player1 = new Player();
-        player2 = new Player();
     }
 
     public void init() {
@@ -17,6 +15,9 @@ public class Game {
 
         Grid grid = new Grid();
         grid.init();
+
+        player1 = new Player();
+        player2 = new Player();
 
         MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
         myKeyboard.init();

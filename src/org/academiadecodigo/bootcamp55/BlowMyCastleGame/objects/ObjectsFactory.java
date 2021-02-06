@@ -6,7 +6,6 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 public class ObjectsFactory {
 
     public void init(int bombs, int wallBlocks) {
-
         for (int i=0; i<=bombs; i++){
             Bomb bomb = new Bomb();
         }
@@ -15,12 +14,7 @@ public class ObjectsFactory {
  //           Wall wallBlock = new Wall();
  //       }
     }
-
     /** create initial set-up of wall bricks
      *
      */
-
-
-
-
 }
