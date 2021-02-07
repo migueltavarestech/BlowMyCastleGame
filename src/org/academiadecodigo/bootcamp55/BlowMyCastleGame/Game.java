@@ -21,11 +21,13 @@ public class Game {
 
         MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
         myKeyboard.init();
+
+        createObjects();
     }
 
     public void start() {}
 
-    public void createObjects(){
+    public void createObjects() {
         ObjectsFactory factory = new ObjectsFactory();
         factory.init(10, 15);
     }

@@ -19,25 +19,25 @@ public class Player {
 
     public void moveRight() {
         playerAvatar.translate(speed,0);
-        position.moveInDirection(GridDirection.RIGHT, speed*avatarSize);
+        position.moveInDirection(GridDirection.RIGHT, speed);
         System.out.println(position.toString());
     }
 
     public void moveLeft() {
         playerAvatar.translate(-speed, 0);
-        position.moveInDirection(GridDirection.LEFT, speed*avatarSize);
+        position.moveInDirection(GridDirection.LEFT, speed);
         System.out.println(position.toString());
     }
 
     public void moveUp() {
         playerAvatar.translate(0, -speed);
-        position.moveInDirection(GridDirection.UP, speed*avatarSize);
+        position.moveInDirection(GridDirection.UP, speed);
         System.out.println(position.toString());
     }
 
     public void moveDown() {
         playerAvatar.translate(0,speed);
-        position.moveInDirection(GridDirection.DOWN, speed*avatarSize);
+        position.moveInDirection(GridDirection.DOWN, speed);
         System.out.println(position.toString());
     }
 
