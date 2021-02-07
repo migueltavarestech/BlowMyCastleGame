@@ -18,13 +18,13 @@ public class Castle extends GameObjects implements Destroyable {
         count++;
         if (count == 1) {
             // First Castle (Left)
-            int Xpos = 100 ;
+            int Xpos = 25 + Grid.getPadding() ;
             int Ypos = 700/2 - castleSize/2;
             castleIcon = new Picture(Xpos,Ypos,"castle.png");
             castleIcon.draw();
         } else {
             // Second Castle (Right)
-            int Xpos = 900 - castleSize;
+            int Xpos = 975 - castleSize + Grid.getPadding();
             int Ypos = 700/2 - castleSize/2;
             castleIcon = new Picture(Xpos,Ypos,"castle.png");
             castleIcon.draw();
