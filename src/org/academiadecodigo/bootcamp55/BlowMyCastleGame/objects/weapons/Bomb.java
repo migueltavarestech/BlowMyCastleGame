@@ -9,14 +9,24 @@ import java.util.concurrent.TimeUnit;
 public class Bomb extends GameObjects {
 
     private Picture bombIcon;
+    private int bombCol;
+    private int bombRow;
 
     public Bomb() {
 
-        int randomX = (int)(Math.random()*(750-250)+250);
-        int randomY = (int)(Math.random()*((700-Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
+        bombCol = (int)(Math.random()*(750-250)+250);
+        bombRow = (int)(Math.random()*((700-Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
 
-        bombIcon = new Picture(randomX,randomY,"bombIcon.png");
+        bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
         bombIcon.draw();
+    }
+
+    public int getBombCol(){
+        return bombCol;
+    }
+
+    public int getBomRow(){
+        return bombRow;
     }
 
 }

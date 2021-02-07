@@ -12,6 +12,10 @@ public class Player {
     private int avatarSize = 20;
     private static int count = 0;
 
+    //gun inventory
+    private static int playerBombs = 0;
+
+
     public Player() {
 
         count++;
@@ -68,6 +72,16 @@ public class Player {
 
     public int getRow() {
         return position.getRow();
+    }
+
+
+    //methods to control the fire power
+    public void setPlayerBombs(int bomb){
+        this.playerBombs = bomb;
+    }
+
+    public int getPlayerBombs (){
+        return playerBombs;
     }
 
 }

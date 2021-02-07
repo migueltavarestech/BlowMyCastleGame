@@ -27,9 +27,9 @@ public class Game {
 
     public void createObjects() {
         ObjectsFactory factory = new ObjectsFactory();
+        factory.init(GameLevel.LEVEL3);
         factory.createCastles();
-        factory.createBombs(10);
-        // factory.init(10, 15);
+        factory.createBombs();
     }
 
 }

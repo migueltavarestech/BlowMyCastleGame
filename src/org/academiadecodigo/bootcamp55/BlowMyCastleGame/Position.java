@@ -63,4 +63,7 @@ public class Position {
                 "}";
     }
 
+    //code to catch bombs
+
+
 }
