@@ -63,21 +63,21 @@ public class MyKeyboard implements KeyboardHandler {
     public void keyPressed(KeyboardEvent e) {
 
         if (e.getKey() == KeyboardEvent.KEY_RIGHT) {
-            player2.moveRight();
+            player2.p2MoveRight();
         } else if (e.getKey() == KeyboardEvent.KEY_LEFT) {
-            player2.moveLeft();
+            player2.p2MoveLeft();
         } else if (e.getKey() == KeyboardEvent.KEY_UP) {
-            player2.moveUp();
+            player2.p2MoveUp();
         } else if (e.getKey() == KeyboardEvent.KEY_DOWN) {
-            player2.moveDown();
+            player2.p2MoveDown();
         } else if (e.getKey() == KeyboardEvent.KEY_D) {
-            player1.moveRight();
+            player1.p1MoveRight();
         } else if (e.getKey() == KeyboardEvent.KEY_A) {
-            player1.moveLeft();
+            player1.p1MoveLeft();
         } else if (e.getKey() == KeyboardEvent.KEY_W) {
-            player1.moveUp();
+            player1.p1MoveUp();
         } else if (e.getKey() == KeyboardEvent.KEY_S) {
-            player1.moveDown();
+            player1.p1MoveDown();
         }
     }
 
