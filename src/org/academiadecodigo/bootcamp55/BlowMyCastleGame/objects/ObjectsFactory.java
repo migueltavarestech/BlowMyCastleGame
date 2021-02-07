@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
@@ -8,8 +9,28 @@ import java.util.concurrent.TimeUnit;
 
 public class ObjectsFactory {
 
-    public void init(int bombs, int wallBlocks)  {
+    private int bombs = 0;
+    private int walls = 0;
+    private Bomb[] bomb;
+    private Wall[] wall;
 
+    public void init(GameLevel gameLevel)  {
+        switch (gameLevel) {
+            case LEVEL1:
+                bombs = 10;
+                walls = 10;
+                break;
+            case LEVEL2:
+                bombs = 15;
+                walls = 15;
+                break;
+            case LEVEL3:
+                bombs = 20;
+                walls = 20;
+                break;
+        }
+        this.bombs = bombs;
+        this.walls = walls;
     }
 
     public void createCastles() {
@@ -17,7 +38,7 @@ public class ObjectsFactory {
         Castle castle2 = new Castle();
     }
 
-    public void createBombs(int bombs) {
+    public void createBombs() {
         // Wait 10 seconds before creating first bombs
         try {
             TimeUnit.SECONDS.sleep(10);
@@ -26,9 +47,10 @@ public class ObjectsFactory {
             Thread.currentThread().interrupt();
         }
 
-        // Create x number of bombs
-        for (int i=0; i<=bombs; i++) {
-            Bomb bomb = new Bomb();
+        // Create bombs according with chosen GameLevel
+        bomb = new Bomb[bombs];
+        for (int i=0; i < bomb.length; i++) {
+            bomb[i] = new Bomb();
         }
     }
 

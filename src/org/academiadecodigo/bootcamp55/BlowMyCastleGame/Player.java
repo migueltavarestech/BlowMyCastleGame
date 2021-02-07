@@ -13,6 +13,10 @@ public class Player {
     private Position player1Pos;
     private Position player2Pos;
 
+    //gun inventory
+    private static int playerBombs = 0;
+
+
     public Player() {
 
         count++;
@@ -130,6 +134,16 @@ public class Player {
                 System.out.println(player2Pos.toString());
             }
         }
+    }
+
+
+    //methods to control the fire power
+    public void setPlayerBombs(int bomb){
+        this.playerBombs = bomb;
+    }
+
+    public int getPlayerBombs (){
+        return playerBombs;
     }
 
 }
