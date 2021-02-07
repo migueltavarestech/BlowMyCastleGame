@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player {
@@ -9,12 +10,32 @@ public class Player {
     private Position position;
     private int speed = 5;
     private int avatarSize = 20;
+    private static int count = 0;
 
     public Player() {
-         playerAvatar = new Picture(0,0,"playerAvatar.png");
-         playerAvatar.draw();
 
-         position = new Position(0, 0);
+        count++;
+        if (count == 1) {
+            // First player (Left)
+            int Xpos = 15 + Castle.getCastleSize()/2;
+            int Ypos = 700/2 + Castle.getCastleSize() - 35;
+
+            playerAvatar = new Picture(Xpos,Ypos,"player1.png");
+            playerAvatar.draw();
+
+            position = new Position(0, 0);
+        } else {
+            // Second player (Right)
+            int Xpos = 975 - Grid.getPadding() - Castle.getCastleSize()/2;
+            int Ypos = 700/2 + Castle.getCastleSize() - 35;
+
+            playerAvatar = new Picture(Xpos,Ypos,"player2.png");
+            playerAvatar.draw();
+
+            position = new Position(0, 0);
+        }
+
+
     }
 
     public void moveRight() {

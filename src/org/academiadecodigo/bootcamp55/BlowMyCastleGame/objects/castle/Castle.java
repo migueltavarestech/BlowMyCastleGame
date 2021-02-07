@@ -49,5 +49,9 @@ public class Castle extends GameObjects implements Destroyable {
         return destroyed;
     }
 
+    public static int getCastleSize() {
+        return castleSize;
+    }
+
 
 }
