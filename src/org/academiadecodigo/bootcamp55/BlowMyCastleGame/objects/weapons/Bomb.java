@@ -4,8 +4,6 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.util.concurrent.TimeUnit;
-
 public class Bomb extends GameObjects {
 
     private Picture bombIcon;
@@ -18,6 +16,10 @@ public class Bomb extends GameObjects {
         bombRow = (int)(Math.random()*((700-Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
 
         bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
+        int randomCol = (int)(Math.random()*(19-6)+6);
+        int randomRow = (int)(Math.random()*(16-1)+1);
+
+        bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
         bombIcon.draw();
     }
 

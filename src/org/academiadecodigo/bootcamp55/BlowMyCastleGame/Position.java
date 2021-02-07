@@ -41,19 +41,19 @@ public class Position {
     }
 
     public void moveUp(int distance) {
-        setPos(getCol(), getRow() - distance);
+        row -= 1;
     }
 
     public void moveDown(int distance) {
-        setPos(getCol(), getRow() + distance);
+        row += 1;
     }
 
     public void moveLeft(int distance) {
-        setPos(getCol() - distance, getRow());
+        col -= 1;
     }
 
     public void moveRight(int distance) {
-        setPos(getCol() + distance, getRow());
+        col += 1;
     }
 
     public String toString() {

@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -12,21 +13,21 @@ public class Castle extends GameObjects implements Destroyable {
     private Picture castleIcon;
     private static int count = 0;
     private static final int castleSize = 100;
+    private static Position castle1Pos;
+    private static Position castle2Pos;
 
     public Castle() {
 
         count++;
         if (count == 1) {
             // First Castle (Left)
-            int Xpos = 25 + Grid.getPadding() ;
-            int Ypos = 700/2 - castleSize/2;
-            castleIcon = new Picture(Xpos,Ypos,"castle.png");
+            castle1Pos = new Position(1,6);
+            castleIcon = new Picture(Grid.columnToX(castle1Pos.getCol()),Grid.rowToY(castle1Pos.getRow()),"castle.png");
             castleIcon.draw();
         } else {
             // Second Castle (Right)
-            int Xpos = 975 - castleSize + Grid.getPadding();
-            int Ypos = 700/2 - castleSize/2;
-            castleIcon = new Picture(Xpos,Ypos,"castle.png");
+            castle2Pos = new Position(21,6);
+            castleIcon = new Picture(Grid.columnToX(castle2Pos.getCol()),Grid.rowToY(castle2Pos.getRow()),"castle.png");
             castleIcon.draw();
         }
     }
@@ -53,5 +54,11 @@ public class Castle extends GameObjects implements Destroyable {
         return castleSize;
     }
 
+    public static Position getCastle1Pos() {
+        return castle1Pos;
+    }
 
+    public static Position getCastle2Pos() {
+        return castle2Pos;
+    }
 }
