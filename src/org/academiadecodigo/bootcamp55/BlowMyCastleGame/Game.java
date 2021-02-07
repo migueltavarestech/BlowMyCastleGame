@@ -11,8 +11,6 @@ public class Game {
     }
 
     public void init() {
-        createObjects();
-
         Grid grid = new Grid();
         grid.init();
 
@@ -29,7 +27,9 @@ public class Game {
 
     public void createObjects() {
         ObjectsFactory factory = new ObjectsFactory();
-        factory.init(10, 15);
+        factory.createCastles();
+        factory.createBombs(10);
+        // factory.init(10, 15);
     }
 
 }
