@@ -17,10 +17,15 @@ public class Game {
         player1 = new Player();
         player2 = new Player();
 
-        MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
-        myKeyboard.init();
-
+ //       MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
+        //       myKeyboard.init();
         createObjects();
+
+        Engine engine = new Engine(player1, player2);
+        engine.init();
+        engine.start();
+
+
     }
 
     public void start() {}
@@ -29,7 +34,7 @@ public class Game {
         ObjectsFactory factory = new ObjectsFactory();
         factory.init(GameLevel.LEVEL3);
         factory.createCastles();
-        factory.createBombs();
+//        factory.createBombs();
     }
 
 }

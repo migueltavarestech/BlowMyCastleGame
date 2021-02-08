@@ -20,9 +20,14 @@ public class Player {
     public Player() {
 
         count++;
+        System.out.println(count);
         if (count == 1) {
             // First player (Left)
+            System.out.println("Player 1");
             player1Pos = new Position(4, 8);
+            if (player1Pos == null){
+                System.out.println("I'm null");
+            }
             playerAvatar = new Picture(Grid.columnToX(player1Pos.getCol()),Grid.rowToY(player1Pos.getRow()),"player1.png");
             playerAvatar.draw();
         } else {
@@ -35,7 +40,9 @@ public class Player {
 
     public void p1MoveRight() {
         // Can't go Right if player is in the last column
-        if (player1Pos.getCol() != Grid.getTotalCols()-1) {
+        if ((player1Pos.getCol() != Grid.getTotalCols()-1) &&
+                player1Pos.getCol() != Castle.getCastle2Pos().getCol())
+                {
             // Can't go too close to the enemy's area
             if (player1Pos.getCol() != Castle.getCastle2Pos().getCol()-2) {
                 // Can't go Right if the castle is there
@@ -50,8 +57,10 @@ public class Player {
         }
     }
 
+
+
     public void p1MoveLeft() {
-        if (player1Pos.getCol() != 0) {
+        if (player1Pos.getCol() != 0 ) {
             if (player1Pos.getCol() != Castle.getCastle1Pos().getCol() + 3 || (
                     player1Pos.getRow() < Castle.getCastle1Pos().getRow() ||
                             player1Pos.getRow() > Castle.getCastle1Pos().getRow() + 2)) {
