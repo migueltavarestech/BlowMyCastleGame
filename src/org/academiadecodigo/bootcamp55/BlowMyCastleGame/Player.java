@@ -16,14 +16,12 @@ public class Player {
     //gun inventory
     private static int playerBombs = 0;
 
-
     public Player() {
 
         count++;
-        System.out.println(count);
+
         if (count == 1) {
             // First player (Left)
-            System.out.println("Player 1");
             player1Pos = new Position(4, 8);
             if (player1Pos == null){
                 System.out.println("I'm null");
@@ -41,21 +39,16 @@ public class Player {
     public void p1MoveRight() {
         // Can't go Right if player is in the last column
         if ((player1Pos.getCol() != Grid.getTotalCols()-1) &&
-                player1Pos.getCol() != Castle.getCastle2Pos().getCol())
-                {
-            // Can't go too close to the enemy's area
-            if (player1Pos.getCol() != Castle.getCastle2Pos().getCol()-2) {
-                // Can't go Right if the castle is there
-                if (player1Pos.getCol() != Castle.getCastle1Pos().getCol() - 1 || (
+                (player1Pos.getCol() != Castle.getCastle2Pos().getCol()-2) &&
+                (player1Pos.getCol() != Castle.getCastle1Pos().getCol() - 1 || (
                         player1Pos.getRow() < Castle.getCastle1Pos().getRow() ||
-                                player1Pos.getRow() > Castle.getCastle1Pos().getRow() + 2)) {
-                    playerAvatar.translate(avatarSize, 0);
-                    player1Pos.moveInDirection(GridDirection.RIGHT, speed);
-                    System.out.println(player1Pos.toString());
-                }
-            }
+                                player1Pos.getRow() > Castle.getCastle1Pos().getRow() + 2))) {
+            playerAvatar.translate(avatarSize, 0);
+            player1Pos.moveInDirection(GridDirection.RIGHT, speed);
+            System.out.println(player1Pos.toString());
         }
-    }
+        }
+
 
 
 
