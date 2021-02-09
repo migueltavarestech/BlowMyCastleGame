@@ -45,7 +45,7 @@ public class Wall extends GameObjects implements Destroyable {
     }
 
     @Override
-    public boolean isDestrotyed() {
+    public boolean isDestroyed() {
         return destroyed;
     }
 
