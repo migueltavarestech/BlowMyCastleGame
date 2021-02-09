@@ -36,6 +36,10 @@ public class ObjectsFactory {
     public void createCastles() {
         Castle castle1 = new Castle();
         Castle castle2 = new Castle();
+
+        // Temporary hit/damage, proof that health bar works;
+        castle1.hit(60);
+        castle2.hit(40);
     }
 
     public void createBombs() {
