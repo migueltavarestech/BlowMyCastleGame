@@ -50,12 +50,16 @@ public class Castle extends GameObjects implements Destroyable {
         return destroyed;
     }
 
-    public static int getCastleSize() {
+    public int getCastleSize() {
         return castleSize;
     }
 
     public static Position getCastle1Pos() {
         return castle1Pos;
+    }
+
+    public int getCastle1Col(){
+        return castle1Pos.getCol();
     }
 
     public static Position getCastle2Pos() {
