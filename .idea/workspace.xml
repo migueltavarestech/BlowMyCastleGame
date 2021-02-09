@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cb4b999-3f21-4142-ba7c-b0bb50f905ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreens.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/simple_graphics_0_2_1_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Music.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/SOUNDS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlowMyCastleGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BlowMyCastleGame.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -91,7 +90,7 @@
       <workItem from="1612776042297" duration="782000" />
       <workItem from="1612777325618" duration="3251000" />
       <workItem from="1612810860165" duration="18210000" />
-      <workItem from="1612861702281" duration="11284000" />
+      <workItem from="1612861702281" duration="18288000" />
     </task>
     <servers />
   </component>
