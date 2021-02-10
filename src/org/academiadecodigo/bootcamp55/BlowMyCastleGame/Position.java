@@ -4,6 +4,7 @@ public class Position {
 
     private int col;
     private int row;
+    private boolean cellOccupied;
 
     public Position(int col, int row) {
         this.col = col;
@@ -23,44 +24,88 @@ public class Position {
         return row;
     }
 
-    public void moveInDirection(GridDirection direction, int distance) {
+    public void moveInDirection(GridDirection direction) {
         switch (direction) {
             case UP:
-                moveUp(distance);
+                moveUp();
                 break;
             case DOWN:
-                moveDown(distance);
+                moveDown();
                 break;
             case LEFT:
-                moveLeft(distance);
+                moveLeft();
                 break;
             case RIGHT:
-                moveRight(distance);
+                moveRight();
                 break;
         }
     }
 
-    public void moveUp(int distance) {
+    public void moveUp() {
         row -= 1;
     }
 
-    public void moveDown(int distance) {
+    public void moveDown() {
         row += 1;
     }
 
-    public void moveLeft(int distance) {
+    public void moveLeft() {
         col -= 1;
     }
 
-    public void moveRight(int distance) {
+    public void moveRight() {
         col += 1;
     }
+
+    public void setCellOccupied(boolean value) { this.cellOccupied = value; }
+
+    public boolean isOccupied() { return cellOccupied; }
 
     public String toString() {
         return "GridPosition{" +
                 "col=" + col +
                 ", row=" + row +
                 "}";
+    }
+
+    public static boolean isNextCellOccupied(GridDirection direction, Position pos) {
+        Position[] occupiedCells = Grid.getOccupiedCells();
+
+        boolean isNextCellOccupied = false;
+        int currentCol = pos.getCol();
+        int currentRow = pos.getRow();
+
+        if (direction == GridDirection.RIGHT) {
+            for (int i = 0; i < occupiedCells.length; i++) {
+                if (currentCol + 1 == occupiedCells[i].getCol() &&
+                        currentRow == occupiedCells[i].getRow()) {
+                    isNextCellOccupied = true;
+                }
+            }
+        } else if (direction == GridDirection.LEFT) {
+            for (int i = 0; i < occupiedCells.length; i++) {
+                if (currentCol - 1 == occupiedCells[i].getCol() &&
+                        currentRow == occupiedCells[i].getRow()) {
+                    isNextCellOccupied = true;
+                }
+            }
+        } else if (direction == GridDirection.UP) {
+            for (int i = 0; i < occupiedCells.length; i++) {
+                if (currentCol == occupiedCells[i].getCol() &&
+                        currentRow - 1 == occupiedCells[i].getRow()) {
+                    isNextCellOccupied = true;
+                }
+            }
+        } else if (direction == GridDirection.DOWN) {
+            for (int i = 0; i < occupiedCells.length; i++) {
+                if (currentCol == occupiedCells[i].getCol() &&
+                        currentRow + 1 == occupiedCells[i].getRow()) {
+                    isNextCellOccupied = true;
+                }
+            }
+        }
+
+        return isNextCellOccupied;
     }
 
     //code to catch bombs

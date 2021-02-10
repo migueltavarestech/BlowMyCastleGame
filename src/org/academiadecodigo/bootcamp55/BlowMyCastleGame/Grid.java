@@ -17,6 +17,7 @@ public class Grid {
     private static int height = 0;
     private static final int totalCols = 25;
     private static final int totalRows = 18;
+    private static Position[] occupiedCells = new Position[0];
 
     public Grid() {
         this.width = totalCols * cellSize;
@@ -64,4 +65,25 @@ public class Grid {
         return totalRows;
     }
 
+    public static void addOccupiedCell(Position element) {
+        Position[] tempArr = new Position[occupiedCells.length + 1];
+        for(int i = 0; i < occupiedCells.length; ++i) {
+            tempArr[i] = occupiedCells[i];
+        }
+        tempArr[occupiedCells.length] = element;
+        occupiedCells = tempArr;
+    }
+
+    public static Position[] getOccupiedCells() {
+        return occupiedCells;
+    }
+
+    public static void print() {
+        String printResult = "";
+        for (int a = 0; a < occupiedCells.length; ++a) {
+            printResult += "iteration " + a + " // col: " + occupiedCells[a].getCol() + ", row: " + occupiedCells[a].getRow() + " // ";
+        }
+
+        System.out.println(printResult);
+    }
 }
