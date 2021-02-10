@@ -17,6 +17,7 @@ public class Grid {
     private static int height = 0;
     private static final int totalCols = 25;
     private static final int totalRows = 18;
+    private static Position[] occupiedCells = new Position[0];
 
     public Grid() {
         this.width = totalCols * cellSize;
@@ -26,6 +27,7 @@ public class Grid {
     public void init() {
       canvas = new Picture(PADDING, PADDING, "background2.png");
       canvas.draw();
+      setCanvasLimits();
     }
 
     public static int getPadding() {
@@ -64,4 +66,50 @@ public class Grid {
         return totalRows;
     }
 
+    public static void addOccupiedCell(Position element) {
+        Position[] tempArr = new Position[occupiedCells.length + 1];
+        for(int i = 0; i < occupiedCells.length; ++i) {
+            tempArr[i] = occupiedCells[i];
+        }
+        tempArr[occupiedCells.length] = element;
+        occupiedCells = tempArr;
+    }
+
+    public static Position[] getOccupiedCells() {
+        return occupiedCells;
+    }
+
+    public void setCanvasLimits() {
+        // UP Limit
+        int y = -1;
+        for(int x=0; x<totalCols; x++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+
+        // DOWN Limit
+        y = totalRows - 2;
+        for(int x=0; x<totalCols; x++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+
+        // LEFT Limit
+        int x = -1;
+        for(y=0; y<totalRows; y++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+
+        // RIGHT Limit
+        x = totalCols;
+        for(y=0; y<totalRows; y++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+    }
 }

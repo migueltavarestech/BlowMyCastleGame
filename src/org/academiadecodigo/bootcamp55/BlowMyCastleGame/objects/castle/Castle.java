@@ -58,12 +58,28 @@ public class Castle extends GameObjects implements Destroyable {
             castleIcon = new Picture(Grid.columnToX(castle1Pos.getCol()),Grid.rowToY(castle1Pos.getRow()),"castle.png");
             castleIcon.draw();
             castleNumber = 1;
+
+            for (int x=1; x<4; x++) {
+                for (int y=6; y<9; y++) {
+                    Position pos = new Position(x, y);
+                    pos.setCellOccupied(true);
+                    Grid.addOccupiedCell(pos);
+                }
+            }
         } else {
             // Second Castle (Right)
             castle2Pos = new Position(21,6);
             castleIcon = new Picture(Grid.columnToX(castle2Pos.getCol()),Grid.rowToY(castle2Pos.getRow()),"castle.png");
             castleIcon.draw();
             castleNumber = 2;
+
+            for (int x=21; x<24; x++) {
+                for (int y=6; y<9; y++) {
+                    Position pos = new Position(x, y);
+                    pos.setCellOccupied(true);
+                    Grid.addOccupiedCell(pos);
+                }
+            }
         }
     }
 

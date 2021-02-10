@@ -127,12 +127,12 @@ public class Engine  implements KeyboardHandler {
 //            System.out.println("in loop" + var2.hasNext());
 
             while(!var2.hasNext()){
-                this.sleep(100L);
+                this.sleep(62L);
                 var2 = this.inputs.entrySet().iterator();
 //                System.out.println("teste" + var2.hasNext());
             }
             this.showAllMovements();
-            this.sleep(100L);
+            this.sleep(62L);
         }
     }
 
@@ -203,28 +203,28 @@ public class Engine  implements KeyboardHandler {
         KEY key = input.getKey();
         switch (key) {
             case DOWN:
-                player2.p2MoveDown();
+                player2.moveDown();
                 break;
             case UP:
-                player2.p2MoveUp();
+                player2.moveUp();
                 break;
             case LEFT:
-                player2.p2MoveLeft();
+                player2.moveLeft();
                 break;
             case RIGHT:
-                player2.p2MoveRight();
+                player2.moveRight();
                 break;
             case A:
-                player1.p1MoveLeft();
+                player1.moveLeft();
                 break;
             case S:
-                player1.p1MoveDown();
+                player1.moveDown();
                 break;
             case W:
-                player1.p1MoveUp();
+                player1.moveUp();
                 break;
             case D:
-                player1.p1MoveRight();
+                player1.moveRight();
         }
 
     }
