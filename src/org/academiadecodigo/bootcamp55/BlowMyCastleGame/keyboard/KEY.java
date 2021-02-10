@@ -14,7 +14,11 @@ public enum KEY {
     W(87),
     I(KeyboardEvent.KEY_I),
     Q(KeyboardEvent.KEY_Q),
-//    ESC(KeyboardEvent.KEY_ESC),
+    ESC(KeyboardEvent.KEY_ESC),
+    ENTER(KeyboardEvent.KEY_ENTER),
+    F11(KeyboardEvent.KEY_F11),        //Decrease sound volume
+    F12(KeyboardEvent.KEY_F12),        //Increase sound volume
+    F10(KeyboardEvent.KEY_F10),        //Sound mute / un-mute
     P(KeyboardEvent.KEY_P);
 
 

@@ -7,6 +7,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.EVENT;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.GameScreens;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -22,6 +23,7 @@ public class Engine  implements KeyboardHandler {
     private Map<Integer, Input> inputs2;
     private boolean stopGame = false;
     private GameScreens screens;
+    private Music music;
 
     public Engine(Player player1, Player player2) {
         this.player1 = player1;
@@ -48,8 +50,15 @@ public class Engine  implements KeyboardHandler {
 
     }
 
+    /**
+     * displays the initial screen and decides upon options
+     * S ---> start game, I ----> intructions, P -----> Pratice, Q ----> Quits Application
+     */
     public void setUP() {
         screens.startScreen();
+
+        music = new Music();
+        music.playMusic();
 
         Iterator<Input> iterator = inputs.values().iterator();
 
