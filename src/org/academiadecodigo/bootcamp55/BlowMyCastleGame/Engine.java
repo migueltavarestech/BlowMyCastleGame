@@ -118,12 +118,12 @@ public class Engine  implements KeyboardHandler {
 //            System.out.println("in loop" + var2.hasNext());
 
             while(!var2.hasNext()){
-                this.sleep(65L);
+                this.sleep(62L);
                 var2 = this.inputs.entrySet().iterator();
 //                System.out.println("teste" + var2.hasNext());
             }
             this.showAllMovements();
-            this.sleep(65L);
+            this.sleep(62L);
         }
     }
 

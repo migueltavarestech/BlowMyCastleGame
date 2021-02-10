@@ -5,14 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Grid.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/MyKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/MyKeyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/castle/Castle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/castle/Castle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

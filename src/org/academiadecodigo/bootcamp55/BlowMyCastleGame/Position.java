@@ -76,30 +76,30 @@ public class Position {
         int currentRow = pos.getRow();
 
         if (direction == GridDirection.RIGHT) {
-            for (int i = 0; i < occupiedCells.length; i++) {
-                if (currentCol + 1 == occupiedCells[i].getCol() &&
-                        currentRow == occupiedCells[i].getRow()) {
+            for (Position element : occupiedCells) {
+                if (currentCol + 1 == element.getCol() &&
+                        currentRow == element.getRow()) {
                     isNextCellOccupied = true;
                 }
             }
         } else if (direction == GridDirection.LEFT) {
-            for (int i = 0; i < occupiedCells.length; i++) {
-                if (currentCol - 1 == occupiedCells[i].getCol() &&
-                        currentRow == occupiedCells[i].getRow()) {
+            for (Position element : occupiedCells) {
+                if (currentCol - 1 == element.getCol() &&
+                        currentRow == element.getRow()) {
                     isNextCellOccupied = true;
                 }
             }
         } else if (direction == GridDirection.UP) {
-            for (int i = 0; i < occupiedCells.length; i++) {
-                if (currentCol == occupiedCells[i].getCol() &&
-                        currentRow - 1 == occupiedCells[i].getRow()) {
+            for (Position element : occupiedCells) {
+                if (currentCol == element.getCol() &&
+                        currentRow - 1 == element.getRow()) {
                     isNextCellOccupied = true;
                 }
             }
         } else if (direction == GridDirection.DOWN) {
-            for (int i = 0; i < occupiedCells.length; i++) {
-                if (currentCol == occupiedCells[i].getCol() &&
-                        currentRow + 1 == occupiedCells[i].getRow()) {
+            for (Position element : occupiedCells) {
+                if (currentCol == element.getCol() &&
+                        currentRow + 1 == element.getRow()) {
                     isNextCellOccupied = true;
                 }
             }

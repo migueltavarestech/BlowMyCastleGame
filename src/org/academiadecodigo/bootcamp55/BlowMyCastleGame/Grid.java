@@ -27,6 +27,7 @@ public class Grid {
     public void init() {
       canvas = new Picture(PADDING, PADDING, "background2.png");
       canvas.draw();
+      setCanvasLimits();
     }
 
     public static int getPadding() {
@@ -78,12 +79,37 @@ public class Grid {
         return occupiedCells;
     }
 
-    public static void print() {
-        String printResult = "";
-        for (int a = 0; a < occupiedCells.length; ++a) {
-            printResult += "iteration " + a + " // col: " + occupiedCells[a].getCol() + ", row: " + occupiedCells[a].getRow() + " // ";
+    public void setCanvasLimits() {
+        // UP Limit
+        int y = -1;
+        for(int x=0; x<totalCols; x++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
         }
 
-        System.out.println(printResult);
+        // DOWN Limit
+        y = totalRows - 2;
+        for(int x=0; x<totalCols; x++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+
+        // LEFT Limit
+        int x = -1;
+        for(y=0; y<totalRows; y++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
+
+        // RIGHT Limit
+        x = totalCols;
+        for(y=0; y<totalRows; y++){
+            Position pos = new Position(x,y);
+            pos.setCellOccupied(true);
+            addOccupiedCell(pos);
+        }
     }
 }
