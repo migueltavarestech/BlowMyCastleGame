@@ -33,4 +33,40 @@ public class Music{
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
+    public static void soundPickUpBomb() {
+        try {
+            File file = new File("resources/sounds/pick-up-bomb2.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void soundBombExplosion() {
+        try {
+            File file = new File("resources/sounds/explosion.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void soundPutDownBlock() {
+        try {
+            File file = new File("resources/sounds/put-down-block.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
 }

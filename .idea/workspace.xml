@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d03676c1-6dad-4188-8495-02c13e2816ca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Music.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
