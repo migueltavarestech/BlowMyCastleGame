@@ -14,10 +14,9 @@ public class Castle extends GameObjects implements Destroyable {
     private boolean destroyed;
     private Picture castleIcon;
     private static int count = 0;
-    private static Position castle1Pos;
-    private static Position castle2Pos;
     private HealthBar healthBar;
     private int castleNumber;
+    private Position pos;
 
     public Castle() {
         count++;
@@ -41,12 +40,8 @@ public class Castle extends GameObjects implements Destroyable {
         return destroyed;
     }
 
-    public static Position getCastle1Pos() {
-        return castle1Pos;
-    }
-
-    public static Position getCastle2Pos() {
-        return castle2Pos;
+    public Position getPos() {
+        return pos;
     }
 
     public int getCastleNumber() { return castleNumber; }
@@ -54,8 +49,8 @@ public class Castle extends GameObjects implements Destroyable {
     public void drawCastles() {
         if (count == 1) {
             // First Castle (Left)
-            castle1Pos = new Position(1,6);
-            castleIcon = new Picture(Grid.columnToX(castle1Pos.getCol()),Grid.rowToY(castle1Pos.getRow()),"castle.png");
+            pos = new Position(1,6);
+            castleIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"castle.png");
             castleIcon.draw();
             castleNumber = 1;
 
@@ -68,8 +63,8 @@ public class Castle extends GameObjects implements Destroyable {
             }
         } else {
             // Second Castle (Right)
-            castle2Pos = new Position(21,6);
-            castleIcon = new Picture(Grid.columnToX(castle2Pos.getCol()),Grid.rowToY(castle2Pos.getRow()),"castle.png");
+            pos = new Position(21,6);
+            castleIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"castle.png");
             castleIcon.draw();
             castleNumber = 2;
 
