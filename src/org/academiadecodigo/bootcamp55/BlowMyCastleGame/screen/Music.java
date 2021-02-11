@@ -19,12 +19,18 @@ public class Music{
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
-            clip.start();
+            start();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             System.err.println(e.getMessage());
 
         }
 
+    }
+
+    private void start() {
+        clip.setFramePosition(0);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
 }
