@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
+
 public class Position {
 
     private int col;
