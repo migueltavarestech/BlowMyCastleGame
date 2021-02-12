@@ -27,10 +27,18 @@ public class Inventory {
             bombIcon = new Picture(Grid.columnToX(6)+Grid.getPadding(),Grid.rowToY(16)+Grid.getPadding()+20,"bombInventory.png");
             bombIcon.draw();
             drawBombText();
+
+            wallsIcon = new Picture(bombIcon.getX()+40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon.draw();
+            drawWallsInfo();
         } else {
             bombIcon = new Picture(Grid.columnToX(18)-10,Grid.rowToY(16)+Grid.getPadding()+20,"bombInventory.png");
             bombIcon.draw();
             drawBombText();
+
+            wallsIcon = new Picture(bombIcon.getX()-40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon.draw();
+            drawWallsInfo();
         }
     }
 
@@ -42,5 +50,14 @@ public class Inventory {
         bombsTextBackground.setColor(Color.WHITE);
         bombsTextBackground.fill();
         bombsNumText.draw();
+    }
+
+    private void drawWallsInfo(){
+        wallsNumText = new Text(wallsIcon.getX()+14, wallsIcon.getY()-10, "" + wallsNumber);
+        wallsNumText.grow(2,2);
+        wallsTextBackground = new Rectangle(wallsNumText.getX()-2.5, wallsNumText.getY()-2.5, wallsNumText.getWidth(), wallsNumText.getHeight());
+        wallsTextBackground.setColor(Color.WHITE);
+        wallsTextBackground.fill();
+        wallsNumText.draw();
     }
 }

@@ -31,7 +31,7 @@ public class Wall extends GameObjects implements Destroyable {
     }
 
     private void drawbombs() {
-        Picture wall = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/walls.png" );
+        Picture wall = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
         wall.draw();
     }
 
