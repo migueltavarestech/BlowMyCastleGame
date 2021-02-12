@@ -14,7 +14,6 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-import java.sql.ClientInfoStatus;
 import java.util.*;
 
 public class GameScreen extends AbstractScreen implements Screens {
@@ -76,12 +75,16 @@ public class GameScreen extends AbstractScreen implements Screens {
     private void placeWalls(Player player) {
 
         if (player.equals(player1)){
+
             if (nrWalls1 !=0 )
             {
                 gameElements.put(new Wall(player.getPos(), WallType.WOOD), player);
                 nrWalls1--;
-                setOcuppiedPos(player.getPos());
                 updateWalls(player, nrWalls1);
+
+                Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
+                setOcuppiedPos(temp);
+
                 return;
             }
         }
@@ -89,7 +92,9 @@ public class GameScreen extends AbstractScreen implements Screens {
             if (nrWalls2 !=0 )
             {
                 gameElements.put(new Wall(player.getPos(), WallType.WOOD), player);
-                setOcuppiedPos(player.getPos());
+                Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
+
+                setOcuppiedPos(temp);
                 nrWalls2--;
                 updateWalls(player, nrWalls2);
             }
@@ -98,7 +103,6 @@ public class GameScreen extends AbstractScreen implements Screens {
     }
 
     private void setOcuppiedPos(Position pos) {
-        System.out.println("column" + pos.getCol());
         pos.setCellOccupied(true);
         Grid.addOccupiedCell(pos);
     }
@@ -107,12 +111,12 @@ public class GameScreen extends AbstractScreen implements Screens {
 
                 if (player.equals(player1)) {
                     text.delete();
-                    text = new Text(80, 40, "   Available Walls: " + nrWall);
+                    text = new Text(80, 40, "   Available Walls: " + nrWalls1);
                     text.draw();
                 }
                 if (player.equals(player2)) {
                     text1.delete();
-                    text1 = new Text(800, 40, "   Available Walls: " + nrWall);
+                    text1 = new Text(800, 40, "   Available Walls: " + nrWalls2);
                     text1.draw();
                 }
 

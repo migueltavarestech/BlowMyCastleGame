@@ -88,7 +88,7 @@ public class Engine  implements KeyboardHandler {
         || gameState == GameState.TWO_PLAYER){
             showAllMovements();
             checkActiveScreen();
-            sleep(70L);
+            sleep(80L);
             }
     }
 
