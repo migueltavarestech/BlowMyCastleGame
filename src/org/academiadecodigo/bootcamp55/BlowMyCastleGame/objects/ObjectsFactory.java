@@ -49,9 +49,29 @@ public class ObjectsFactory {
     /** create initial set-up of wall bricks
      *
      */
-    public void createWalls(){
+
+    public void createWalls(int nrPlayer) {
+        wall = new Wall[this.walls * 2];
+        Position pos;
+        int deltaPos = 1;
+
+        for (int i = 0; i < wall.length / 2; i++) {
+            pos = new Position(1 + i * deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+
+        }
+
+        for (int i = wall.length / 2; i < wall.length; i++) {
+//            System.out.println(i);
+            pos = new Position(24 + (i - wall.length) * deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+        }
+    }
+
+
+ /*
+    public Wall createWalls(int nrplayer){
         wall = new Wall[this.walls*2];
-        System.out.println(wall.length);
         Position pos;
         int deltaPos = 1;
 
@@ -68,5 +88,5 @@ public class ObjectsFactory {
         }
 
     }
-
+*/
 }

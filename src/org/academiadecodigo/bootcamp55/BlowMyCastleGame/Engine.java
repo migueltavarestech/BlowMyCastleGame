@@ -66,16 +66,16 @@ public class Engine  implements KeyboardHandler {
         ObjectsFactory factory = new ObjectsFactory();
         factory.init(GameLevel.LEVEL3);
         factory.createCastles();
-        factory.createWalls();
+//        factory.createWalls();
 
         /**
          * create the screens associeted with the several stages of the game
          */
         screens.put(GameState.MENU, new MenuScreen(this));
         screens.put(GameState.INSTRUCTIONS, new InstructionsMenu(this));
+        screens.put(GameState.TWO_PLAYER, new GameScreen(this));
 
         activeScreen = screens.get(gameState);
-
 
         stopGame = false;
     }
@@ -84,10 +84,11 @@ public class Engine  implements KeyboardHandler {
 
         activeScreen.show();
 
-        while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS){
+        while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
+        || gameState == GameState.TWO_PLAYER){
             showAllMovements();
             checkActiveScreen();
-            sleep(62L);
+            sleep(70L);
             }
     }
 
@@ -112,7 +113,7 @@ public class Engine  implements KeyboardHandler {
 
         while (game.isRunning()){
             showAllMovements();
-            sleep(62L);
+            sleep(10L);
         }
 
         game.end();
@@ -155,10 +156,10 @@ public class Engine  implements KeyboardHandler {
 
     public void keyPressed(KeyboardEvent keyboardEvent) {
         KEY key = KEY.withCode(keyboardEvent.getKey());
-        System.out.println("key pressed");
+ //       System.out.println("key pressed");
         synchronized (this.inputs) {
             this.inputs.put(keyboardEvent.getKey(), new Input(key, EVENT.KEY_PRESS));
-            System.out.println(key);
+//            System.out.println(key);
         }
     }
 

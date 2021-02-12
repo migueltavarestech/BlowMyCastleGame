@@ -69,4 +69,9 @@ public class Player {
         return playerBombs;
     }
 
+
+
+    public Position getPos() {
+        return pos;
+    }
 }

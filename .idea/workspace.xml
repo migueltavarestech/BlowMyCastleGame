@@ -2,26 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29d2a9ff-cf81-4bfc-8eef-3652851c8753" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/AbstractGames.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/GameContracts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/HandleInputs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/AbstractScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/InstructionsMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/MenuScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Screens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/GameLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/walls/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/walls/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreens.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/Music.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -83,19 +77,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -111,7 +92,9 @@
       <option name="presentableId" value="Default" />
       <updated>1612991072196</updated>
       <workItem from="1612991075310" duration="10713000" />
-      <workItem from="1613056477228" duration="28838000" />
+      <workItem from="1613056477228" duration="39136000" />
+      <workItem from="1613133512784" duration="3255000" />
+      <workItem from="1613136785078" duration="9162000" />
     </task>
     <servers />
   </component>
@@ -129,6 +112,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BlowMyCastleGame$Main.ic" NAME="Main Coverage Results" MODIFIED="1612990543933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
