@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29d2a9ff-cf81-4bfc-8eef-3652851c8753" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlowMyCastleGame/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/games/TwoPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/keyboard/KEY.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/objects/ObjectsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp55/BlowMyCastleGame/screen/GameScreen.java" afterDir="false" />
-    </list>
+    <list default="true" id="29d2a9ff-cf81-4bfc-8eef-3652851c8753" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
