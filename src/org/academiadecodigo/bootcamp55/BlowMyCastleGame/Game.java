@@ -1,12 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.ObjectsFactory;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.*;
 
 public class Game {
 
@@ -17,16 +12,16 @@ public class Game {
     }
 
     public void init() {
-        Grid grid = new Grid();
-        grid.init();
+ //       Grid grid = new Grid();
+//        grid.init();
 
 
         //       MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
         //       myKeyboard.init();
-        createObjects();
+//        createObjects();
         Engine engineSelect = new Engine();
         engineSelect.init();
-        engineSelect.setUP();
+        engineSelect.startEngine();
 
     }
 

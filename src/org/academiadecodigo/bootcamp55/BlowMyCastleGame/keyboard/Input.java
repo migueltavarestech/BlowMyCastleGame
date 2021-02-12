@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard;
 
 public class Input {
-    private KEY key;
+    private final KEY key;
     private EVENT event;
 
     public Input(KEY key, EVENT keyPress) {
