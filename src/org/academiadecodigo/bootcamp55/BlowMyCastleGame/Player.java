@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Inventory;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player {
@@ -11,6 +12,7 @@ public class Player {
     private int avatarSize = 40;
     private static int count = 0;
     private Position pos;
+    private Inventory inventory;
 
     //gun inventory
     private static int playerBombs = 0;
@@ -24,11 +26,17 @@ public class Player {
             pos = new Position(4,8);
             playerAvatar = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"player1.png");
             playerAvatar.draw();
+
+            inventory = new Inventory(15,10);
+            inventory.initialDraw(1);
         } else {
             // Second player (Right)
             pos = new Position(20, 8);
             playerAvatar = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"player2.png");
             playerAvatar.draw();
+
+            inventory = new Inventory(15,10);
+            inventory.initialDraw(2);
         }
     }
 
