@@ -5,13 +5,14 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Bomb extends GameObjects {
 
@@ -22,6 +23,9 @@ public class Bomb extends GameObjects {
     private Position pos;
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private boolean hitHappened;
+    private LinkedList<Castle> castleList;
+    private int castleNum;
 
     public Bomb() {
 
@@ -44,12 +48,16 @@ public class Bomb extends GameObjects {
     }
 
     public void launchBomb(final GridDirection lastDirection) {
-        final Runnable beeper = new Runnable() {
-            public void run() {
-                bombThrowLogic(lastDirection);
-
-            }};
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper,150,200,TimeUnit.MILLISECONDS);
+        try {
+            final Runnable beeper = new Runnable() {
+                public void run() {
+                    bombThrowLogic(lastDirection);
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 150, 200, TimeUnit.MILLISECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("test");
+        }
     }
 
     public void bombThrowLogic(GridDirection lastDirection) {
@@ -57,28 +65,62 @@ public class Bomb extends GameObjects {
             if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
                 bombIcon.translate(-bombAvatar, 0);
                 pos.moveInDirection(GridDirection.LEFT);
+            } else {
+                bombHit(lastDirection);
             }
         }
-        else if(lastDirection == GridDirection.RIGHT){
+         else if(lastDirection == GridDirection.RIGHT){
             if(!Position.isNextCellOccupied(GridDirection.RIGHT,pos)) {
                 bombIcon.translate(bombAvatar, 0);
                 pos.moveInDirection(GridDirection.RIGHT);
+            } else {
+                bombHit(lastDirection);
             }
         }
         else if (lastDirection == GridDirection.DOWN) {
             if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
                 bombIcon.translate(0, bombAvatar);
                 pos.moveInDirection(GridDirection.DOWN);
+            } else {
+                bombHit(lastDirection);
             }
         }
         else if (lastDirection == GridDirection.UP) {
             if (!Position.isNextCellOccupied(GridDirection.UP, pos)) {
                 bombIcon.translate(0, -bombAvatar);
                 pos.moveInDirection(GridDirection.UP);
+            } else {
+                bombHit(lastDirection);
             }
         }
-       // else {
-           // bombHit();
-      //  }
+    }
+
+    public void bombHit (GridDirection lastDirection) {
+        scheduler.shutdownNow();
+        if(isItAWall()){
+           // wall.hit(damage);
+            Music.soundBombExplosion();
+        } else if (isItACastle(lastDirection)){
+            castleList.get(castleNum).hit(15);
+            System.out.println("it's a hit!");
+            Music.soundBombExplosion();
+        }
+        bombIcon.delete();
+    }
+
+    public boolean isItAWall(){
+        // Ask wall class
+        return false;
+    }
+
+    public boolean isItACastle(GridDirection lastDirection){
+        castleList = Castle.getList();
+        for (int i=0; i<2; i++) {
+            if (castleList.get(i).isCastle(pos, lastDirection)) {
+                castleNum = i;
+                return true;
+            }
+        }
+        return false;
     }
 }

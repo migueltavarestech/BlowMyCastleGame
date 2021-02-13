@@ -1,12 +1,16 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Castle extends GameObjects implements Destroyable {
 
@@ -17,11 +21,15 @@ public class Castle extends GameObjects implements Destroyable {
     private HealthBar healthBar;
     private int castleNumber;
     private Position pos;
+    private Position[] posArr = new Position[0];
+    private static LinkedList<Castle> castleList = new LinkedList();
 
     public Castle() {
         count++;
         drawCastles();
         healthBar = new HealthBar();
+        castleList.add(this);
+
     }
 
     @Override
@@ -31,6 +39,7 @@ public class Castle extends GameObjects implements Destroyable {
             healthBar.showDamage(this, damage);
             if (castleHealth <= 0) {
                 destroyed = true;
+                // set Engine game over
             } else if (castleHealth <= 25) {
                 castleIcon.load("castle25.png");
             } else if (castleHealth <= 50) {
@@ -65,6 +74,7 @@ public class Castle extends GameObjects implements Destroyable {
                     Position pos = new Position(x, y);
                     pos.setCellOccupied(true);
                     Grid.addOccupiedCell(pos);
+                    addCastlePos(pos);
                 }
             }
         } else {
@@ -79,10 +89,38 @@ public class Castle extends GameObjects implements Destroyable {
                     Position pos = new Position(x, y);
                     pos.setCellOccupied(true);
                     Grid.addOccupiedCell(pos);
+                    addCastlePos(pos);
                 }
             }
         }
     }
 
+    public void addCastlePos(Position element) {
+        Position[] tempArr = new Position[posArr.length + 1];
+        for(int i = 0; i < posArr.length; ++i) {
+            tempArr[i] = posArr[i];
+        }
+        tempArr[posArr.length] = element;
+        posArr = tempArr;
+    }
+
+    public Position[] getPosArr(){
+        return posArr;
+    }
+
+    public static LinkedList<Castle> getList(){return castleList;}
+
+    public boolean isCastle(Position bombPos, GridDirection direction){
+        for (Position position : posArr) {
+            if(direction == GridDirection.RIGHT) {
+                if (position.getCol() == bombPos.getCol() - 1 &&
+                        position.getRow() == bombPos.getRow()) {
+                    return true;
+                }
+            }
+            // Implementar LEFT (Col + 1) / UP (Row -1) / DOWN (Row + 1)
+        }
+        return false;
+    }
 
 }
