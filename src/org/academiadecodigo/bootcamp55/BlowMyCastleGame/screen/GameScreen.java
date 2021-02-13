@@ -165,10 +165,7 @@ public class GameScreen extends AbstractScreen implements Screens {
                         placeWalls(player2);
                         break;
                     case SPACE:
-                        for (int i = 0; i < 10; i++){
-                            player1.shoot();
-                            Thread.sleep(40);
-                        }
+                        player1.shoot();
                         break;
                 }
             }

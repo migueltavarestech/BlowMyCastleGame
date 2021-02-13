@@ -91,7 +91,7 @@ public class Engine  implements KeyboardHandler {
         || gameState == GameState.TWO_PLAYER){
             showAllMovements();
             checkActiveScreen();
-            sleep(80L);
+            sleep(60L);
             }
     }
 
@@ -135,12 +135,12 @@ public class Engine  implements KeyboardHandler {
 //            System.out.println("in loop" + var2.hasNext());
 
             while(!var2.hasNext()){
-                this.sleep(62L);
+                //this.sleep(62L);
                 var2 = this.inputs.entrySet().iterator();
 //                System.out.println("teste" + var2.hasNext());
             }
             this.showAllMovements();
-            this.sleep(62L);
+            this.sleep(100L);
         }
     }
 

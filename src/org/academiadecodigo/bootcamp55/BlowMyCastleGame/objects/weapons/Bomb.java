@@ -8,16 +8,20 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class Bomb extends GameObjects {
 
     private Picture bombIcon;
-    private int bombAvatar = 20;
+    private int bombAvatar = 40;
     private int bombCol;
     private int bombRow;
     private Position pos;
     private boolean usedBomb = false;
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     public Bomb() {
 
@@ -39,15 +43,19 @@ public class Bomb extends GameObjects {
         bombIcon.draw();
     }
 
-    public void launchBomb() throws InterruptedException {
-        for (int i = bombCol; i < bombCol+8; i += 1) {
-            if (!Position.isNextCellOccupied(GridDirection.LEFT, pos)) {
-                bombIcon.translate(-bombAvatar, 0);
-                pos.moveInDirection(GridDirection.LEFT);
-                // Thread.sleep(50);
-            }
-        }
+    public void launchBomb() {
+        final Runnable beeper = new Runnable() {
+            public void run() {
+                bombThrowLogic();
+
+            }};
+        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper,150,200,TimeUnit.MILLISECONDS);
     }
 
-
+    public void bombThrowLogic() {
+        if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
+            bombIcon.translate(-bombAvatar, 0);
+            pos.moveInDirection(GridDirection.LEFT);
+        }
+    }
 }
