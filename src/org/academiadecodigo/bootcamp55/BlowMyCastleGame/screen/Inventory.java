@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -10,7 +11,7 @@ public class Inventory {
 
     private Picture bombIcon;
     private Picture wallsIcon;
-    private int bombsNumber;
+    private int bombsNumber = 5; // martelei bombas para teste
     private int wallsNumber;
     private Text bombsNumText;
     private Text wallsNumText;
@@ -18,8 +19,8 @@ public class Inventory {
     private Rectangle wallsTextBackground;
 
     public Inventory(int bombsNumber, int wallsNumber) {
-        this.bombsNumber = bombsNumber;
-        this.wallsNumber = wallsNumber;
+       this.bombsNumber = bombsNumber;
+       this.wallsNumber = wallsNumber;
     }
 
     public void initialDraw(int playerNum){
@@ -61,8 +62,15 @@ public class Inventory {
         wallsNumText.draw();
     }
 
-    public void useBomb(){
-        bombsNumber -= 1;
+    public void useBomb(int col, int row) throws InterruptedException {
+        if (bombsNumber > 0){
+            bombsNumber -= 1;
+            Bomb bomb = new Bomb(col, row); //a criar uma nova, mas é suposto utilizar das que capturarmos
+            bomb.launchBomb();
+        }
+        else {
+            System.out.println("There are no more bombs available");
+        }
     }
 
     public void useWall(){
