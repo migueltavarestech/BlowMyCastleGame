@@ -77,8 +77,8 @@ public class Bomb extends GameObjects {
                 pos.moveInDirection(GridDirection.UP);
             }
         }
-        else {
-            bombHit();
-        }
+       // else {
+           // bombHit();
+      //  }
     }
 }
