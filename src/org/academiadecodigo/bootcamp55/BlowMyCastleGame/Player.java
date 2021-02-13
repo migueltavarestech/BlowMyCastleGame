@@ -93,7 +93,7 @@ public class Player {
     }
 
     public void shoot() throws InterruptedException {
-        inventory.useBomb(pos.getCol(), pos.getRow());
+        inventory.useBomb(pos.getCol(), pos.getRow(),lastDirection);
     }
 
     //methods to control the fire power
