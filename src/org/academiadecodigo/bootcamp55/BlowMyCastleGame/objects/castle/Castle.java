@@ -31,6 +31,12 @@ public class Castle extends GameObjects implements Destroyable {
             healthBar.showDamage(this, damage);
             if (castleHealth <= 0) {
                 destroyed = true;
+            } else if (castleHealth <= 25) {
+                castleIcon.load("castle25.png");
+            } else if (castleHealth <= 50) {
+                castleIcon.load("castle50.png");
+            } else if (castleHealth <= 75) {
+                castleIcon.load("castle75.png");
             }
         }
     }
