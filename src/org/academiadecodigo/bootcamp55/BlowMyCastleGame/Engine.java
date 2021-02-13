@@ -80,7 +80,7 @@ public class Engine  implements KeyboardHandler {
         stopGame = false;
     }
 
-    public void startEngine(){
+    public void startEngine() throws InterruptedException {
 
         music = new Music();
         music.playMusic();
@@ -110,7 +110,7 @@ public class Engine  implements KeyboardHandler {
         this.gameState = gameState;
     }
 
-    public void play(){
+    public void play() throws InterruptedException {
 
         game.init(gameState);
 
@@ -128,7 +128,7 @@ public class Engine  implements KeyboardHandler {
     /**
      * runs the 2 players game
      */
-    public void start() {
+    public void start() throws InterruptedException {
 
         while (!this.stopGame) {
             Iterator var2 = this.inputs.entrySet().iterator();
@@ -180,7 +180,7 @@ public class Engine  implements KeyboardHandler {
         keyboard.addEventListener(event);
     }
 
-    public void showAllMovements() {
+    public void showAllMovements() throws InterruptedException {
 
         synchronized (this.inputs) {
             Iterator var2 = this.inputs.entrySet().iterator();

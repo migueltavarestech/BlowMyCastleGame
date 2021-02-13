@@ -122,9 +122,8 @@ public class GameScreen extends AbstractScreen implements Screens {
 
             }
 
-
             @Override
-            public void handleInputs (Input input){
+            public void handleInputs (Input input) throws InterruptedException {
 
                 KEY key = input.getKey();
 
@@ -144,6 +143,9 @@ public class GameScreen extends AbstractScreen implements Screens {
                     case RIGHT:
                         player2.moveRight();
                         break;
+                    case ENTER:
+                        player2.shoot();
+                        break;
                     case A:
                         player1.moveLeft();
                         break;
@@ -161,6 +163,12 @@ public class GameScreen extends AbstractScreen implements Screens {
                         break;
                     case ZERO:
                         placeWalls(player2);
+                        break;
+                    case SPACE:
+                        for (int i = 0; i < 10; i++){
+                            player1.shoot();
+                            Thread.sleep(40);
+                        }
                         break;
                 }
             }

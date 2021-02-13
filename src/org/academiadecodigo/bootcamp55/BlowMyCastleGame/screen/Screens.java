@@ -7,7 +7,7 @@ public interface Screens {
 
     void hide();
 
-    void handleInputs(Input value);
+    void handleInputs(Input value) throws InterruptedException;
 
     /**
          * Put in place to hadle the several screens

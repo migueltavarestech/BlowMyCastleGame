@@ -22,8 +22,8 @@ public abstract class AbstractScreen {
     }
 
 
-    // validate inouts and process the events in the objects created by Inputs
-    public void handleInputs(Input input){
+    // validate inputs and process the events in the objects created by Inputs
+    public void handleInputs(Input input) throws InterruptedException {
 
     }
 
