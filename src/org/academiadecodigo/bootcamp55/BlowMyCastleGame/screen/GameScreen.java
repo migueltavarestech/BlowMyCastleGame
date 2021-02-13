@@ -1,17 +1,19 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Engine;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridObjects;
+
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 import java.util.*;
@@ -26,61 +28,74 @@ public class GameScreen extends AbstractScreen implements Screens {
     private Map<Wall, Player> gameElements;
     private int nrWalls1;
     private int nrWalls2;
-    private Text text;
-    private Text text1;
+
     private List<Wall> listofKeys;
+    private List<Inventory> inventory;
+    private List<Player> players;
+
+    private int nrPlayers = 2;
 
     public GameScreen(Engine engine) {
         super(engine);
         gameElements = new HashMap<>();
         listofKeys = new ArrayList<>();
+        inventory = new LinkedList<>();
+        players = new LinkedList<>();
     }
 
     @Override
     public void show() {
-        // players
-        player1 = new Player(1);
-        player2 = new Player(2);
-        // wall bricks
-        setUpWalls();
+
+        /**
+         * creates set of players
+         */
+        player1 = new Player(1);         // will receive Player number
+        player2 = new Player(2);         // with player number
+        players.add(player1);
+        players.add(player2);
+
+        /**
+         * create inventory dependent on GameLeval and display
+         */
+        inventory.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
+        inventory.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
+
+        for (Inventory entry : inventory){
+            entry.initialDraw();
+        }
     }
 
     @Override
     public void hide() {
-        hideWalls();
+        /** previous players and other objects have to be removed from screen
+         * it corresponds to delete the current pictures and clear all occupied cells
+         * or re-use same players with clear inventory
+         */
 
-    }
+        for (Player entry : players){
+            entry.hide();
+        }
+        players.clear();
 
-    private void hideWalls() {
-        gameElements.clear();
-    }
+        for (Inventory entry : inventory){
+            entry.hide();
+        }
+        inventory.clear();
 
-    private void setUpWalls() {
-        //add GameLevel logic (no need for switch cases)
-
-        nrWalls1 = gameLevel.getWall();
-        nrWalls2 = gameLevel.getWall();
-
-//        Picture pictureWall = new Picture(40, 40, "resources/Pictures/walls.png");
-//        pictureWall.draw();
-//        text = new Text(80, 40, "   Available Walls: " + nrWalls1);
-//        text.draw();
-//
-//        Picture pictureWall2 = new Picture(800, 40, "resources/Pictures/walls.png");
-//        pictureWall2.draw();
-//        text1 = new Text(800, 40, "   Available Walls: " + nrWalls2);
-//        text1.draw();
+        for (Wall w : gameElements.keySet()){
+            w.hideWall();
+        }
     }
 
     private void placeWalls(Player player) {
 
         if (player.equals(player1)){
 
-            if (nrWalls1 !=0 )
-            {
-                gameElements.put(new Wall(player.getPos(), WallType.WOOD), player);
-                nrWalls1--;
-                updateWalls(player, nrWalls1);
+            if (inventory.get(0).getWallsNumber() != 0) {
+
+                Wall newWall =new Wall(player.getPos(), WallType.WOOD);
+                gameElements.put(newWall, player);
+                inventory.get(0).useWall();
 
                 Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
                 setOcuppiedPos(temp);
@@ -89,14 +104,18 @@ public class GameScreen extends AbstractScreen implements Screens {
             }
         }
         if (player.equals(player2)){
-            if (nrWalls2 !=0 )
+
+            if (inventory.get(1).getWallsNumber() != 0)
             {
-                gameElements.put(new Wall(player.getPos(), WallType.WOOD), player);
+                Wall newWall =new Wall(player.getPos(), WallType.WOOD);
+                gameElements.put(newWall, player);
+                inventory.get(1).useWall();
+
                 Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
 
                 setOcuppiedPos(temp);
-                nrWalls2--;
-                updateWalls(player, nrWalls2);
+
+                return;
             }
 
         }
@@ -107,23 +126,8 @@ public class GameScreen extends AbstractScreen implements Screens {
         Grid.addOccupiedCell(pos);
     }
 
-    private void updateWalls (Player player,int nrWall){
-
-                if (player.equals(player1)) {
-                    text.delete();
-                    text = new Text(80, 40, "   Available Walls: " + nrWalls1);
-                    text.draw();
-                }
-                if (player.equals(player2)) {
-                    text1.delete();
-                    text1 = new Text(800, 40, "   Available Walls: " + nrWalls2);
-                    text1.draw();
-                }
-
-            }
-
-            @Override
-            public void handleInputs (Input input) throws InterruptedException {
+    @Override
+    public void handleInputs (Input input) throws InterruptedException {
 
                 KEY key = input.getKey();
 

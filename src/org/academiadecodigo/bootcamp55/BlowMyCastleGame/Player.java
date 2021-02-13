@@ -1,7 +1,9 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Inventory;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player {
@@ -27,16 +29,16 @@ public class Player {
             playerAvatar = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"/players/player1down.png");
             playerAvatar.draw();
 
-            inventory = new Inventory(15,10);
-            inventory.initialDraw(1);
+ //           inventory = new Inventory(15,10);
+ //           inventory.initialDraw(1);
         } else {
             // Second player (Right)
             pos = new Position(20, 8);
             playerAvatar = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"/players/player2down.png");
             playerAvatar.draw();
 
-            inventory = new Inventory(15,10);
-            inventory.initialDraw(2);
+//            inventory = new Inventory(15,10);
+//            inventory.initialDraw(2);
         }
     }
 
@@ -105,8 +107,14 @@ public class Player {
         return playerBombs;
     }
 
+
+
     public Position getPos() {
         return pos;
+    }
+
+    public void hide() {
+        playerAvatar.delete();
     }
 
     public GridDirection getLastDirection() {return lastDirection;}

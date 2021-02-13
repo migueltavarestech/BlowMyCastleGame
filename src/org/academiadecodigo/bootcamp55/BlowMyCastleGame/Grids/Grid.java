@@ -1,9 +1,6 @@
-package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
+package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.*;
 
 public class Grid {
 
@@ -12,7 +9,7 @@ public class Grid {
     private Picture canvas;
     private static final int PADDING = 10;
     private static final int waterPadding = 50;
-    private static final int cellSize = 40;
+    protected static final int cellSize = 40;
     private static int width = 0;
     private static int height = 0;
     private static final int totalCols = 25;

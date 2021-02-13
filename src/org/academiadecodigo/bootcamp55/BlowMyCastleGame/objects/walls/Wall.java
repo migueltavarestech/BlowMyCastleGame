@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -29,12 +29,33 @@ public class Wall extends GameObjects implements Destroyable {
 
     }
 
+    /**
+     * draw the wall in the grid for the wall pos
+     */
     private void drawWalls() {
         wallIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
         wallIcon.draw();
     }
 
+    /**
+     * deletes the wall from screen, for instance when damaged by the enemy
+     */
+    public void hideWall() {
+        wallIcon.delete();
+    }
 
+    public Picture getWall() {
+        return wallIcon;
+    }
+
+    public Position getPos() {
+        return pos;
+    }
+
+    /**
+     * Checks damage level of Wall upon hit, if destroyed deletes the wall and setCellOccupied to false
+     * @param hit
+     */
     @Override
     public void hit(int hit) {
 
@@ -43,6 +64,9 @@ public class Wall extends GameObjects implements Destroyable {
 
             if (wallHealth == 0) {
                 destroyed = true;
+                hideWall();
+                Position temp = new Position(pos.getCol(), pos.getRow());
+                temp.setCellOccupied(false);
             } else if (wallHealth <= 35) {
                 wallIcon.load("/Pictures/woodWall35.png");
             } else if (wallHealth <= 75) {
