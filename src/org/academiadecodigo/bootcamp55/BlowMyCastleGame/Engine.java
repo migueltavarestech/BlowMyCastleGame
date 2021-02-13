@@ -1,46 +1,56 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
-import java.security.Key;
 import java.util.*;
 import java.util.Map.Entry;
+
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.AbstractGames;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.GameState;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.EVENT;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.GameScreens;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.ObjectsFactory;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.*;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Engine  implements KeyboardHandler {
-    private int nrPlayers;
+
     private Keyboard keyboard;
     private KEY[] keys;
     private Player player1;
     private Player player2;
     private Map<Integer, Input> inputs;
-    private Map<Integer, Input> inputs2;
-    private boolean stopGame = false;
-    private GameScreens screens;
+    private GameState gameState = GameState.MENU;
+    private boolean stopGame;
+    private MenuScreen menuScreen;
+    private Screens activeScreen;
+    private Map<GameState, Screens> screens;
+    private InstructionsMenu instructionsMenu;
     private Music music;
+    private GameContracts game;
+
 
     public Engine(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         inputs = new LinkedHashMap();
-//        keyboard = new Keyboard(this);
-//        screens = new GameScreens();
-
     }
 
     public Engine() {
         inputs = new LinkedHashMap();
         keyboard = new Keyboard(this);
-        screens = new GameScreens();
+        screens = new HashMap<>();
     }
 
     public void init() {
+        /**
+         * Initiates the keyboard and the listener for the keys used in the game
+         * see @KEY for details on the overall used keys in the game
+         */
         this.keyboard = new Keyboard(this);
 
         for (KEY key : KEY.values()) {
@@ -48,74 +58,69 @@ public class Engine  implements KeyboardHandler {
             this.addListener(keyboard, key.getKeyCode(), KeyboardEventType.KEY_RELEASED);
         }
 
-    }
-
-    /**
-     * displays the initial screen and decides upon options
-     * S ---> start game, I ----> intructions, P -----> Pratice, Q ----> Quits Application
-     */
-    public void setUP() {
-        screens.startScreen();
-
-        music = new Music();
-        music.playMusic();
-
-        Iterator<Input> iterator = inputs.values().iterator();
+        /**
+         * Initiates the background grid with the two castles already in place
+         */
+        Grid grid = new Grid();
+        grid.init();
+        ObjectsFactory factory = new ObjectsFactory();
+        factory.init(GameLevel.LEVEL3);
+        factory.createCastles();
+//        factory.createWalls();
 
         /**
-         *  wait till key is pressed
+         * create the screens associeted with the several stages of the game
          */
-        while (!iterator.hasNext()){
-            sleep(10);
-            iterator = inputs.values().iterator();
-        }
+        screens.put(GameState.MENU, new MenuScreen(this));
+        screens.put(GameState.INSTRUCTIONS, new InstructionsMenu(this));
+        screens.put(GameState.TWO_PLAYER, new GameScreen(this));
 
-        /**
-         * acts on pressed key
-         */
-        Input input = null;
-        if (iterator.hasNext()) {
-            input = iterator.next();
-            setUPActions(input);   // if not valid key re-runs this method
-        }
+        activeScreen = screens.get(gameState);
+
+        stopGame = false;
     }
 
-    /**
-     * decision maker based on player inputs
-     * if not valid key re-runs setUP method
-     * @param input
-     */
-    public void setUPActions(Input input){
-        KEY key = input.getKey();
+    public void startEngine(){
 
-            switch (key){
-                case S:
-                    Game newGame = new Game();
-                    newGame.start();
-                    break;
-                case P:
-                    pratice();
-                    break;
-                case I:
-                    instructions();
-                    break;
-                case Q:
-                    System.exit(0);
-                default:
-                    inputs.clear();
-                    sleep(100);
-                    setUP();
-                    break;
+        activeScreen.show();
 
+        while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
+        || gameState == GameState.TWO_PLAYER){
+            showAllMovements();
+            checkActiveScreen();
+            sleep(80L);
             }
+    }
 
+    private void checkActiveScreen() {
+
+        Screens current = screens.get(gameState);
+
+        if (current != activeScreen) {
+            activeScreen.hide();
+            activeScreen = current;
+            activeScreen.show();
+        }
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public void play(){
+
+        game.init(gameState);
+
+        while (game.isRunning()){
+            showAllMovements();
+            sleep(10L);
         }
 
-    private void instructions() {
+        game.end();
+        // funny sound stuff
+        gameState = GameState.MENU;
     }
 
-    private void pratice() {
-    }
 
     /**
      * runs the 2 players game
@@ -149,24 +154,12 @@ public class Engine  implements KeyboardHandler {
 
     }
 
-    public void playerKeys(int nrPlayers) {
-        this.keys = new KEY[8];
-        this.keys[0] = KEY.A;
-        this.keys[1] = KEY.S;
-        this.keys[2] = KEY.D;
-        this.keys[3] = KEY.W;
-        this.keys[4] = KEY.DOWN;
-        this.keys[5] = KEY.UP;
-        this.keys[6] = KEY.LEFT;
-        this.keys[7] = KEY.RIGHT;
-    }
-
     public void keyPressed(KeyboardEvent keyboardEvent) {
         KEY key = KEY.withCode(keyboardEvent.getKey());
-        System.out.println("key pressed");
+ //       System.out.println("key pressed");
         synchronized (this.inputs) {
             this.inputs.put(keyboardEvent.getKey(), new Input(key, EVENT.KEY_PRESS));
-            System.out.println(key);
+//            System.out.println(key);
         }
     }
 
@@ -185,47 +178,19 @@ public class Engine  implements KeyboardHandler {
     }
 
     public void showAllMovements() {
-        System.out.println("in show");
+
         synchronized (this.inputs) {
             Iterator var2 = this.inputs.entrySet().iterator();
-            System.out.println("in loop" + var2.hasNext() + "teste" + inputs.values());
+//            System.out.println("in loop" + var2.hasNext() + "teste" + inputs.values());
 
             while (var2.hasNext()) {
-                System.out.println("in loop");
+//                System.out.println("in loop");
                 Entry<Integer, Input> entry = (Entry) var2.next();
-                this.movePlayer(entry.getValue());
+//                System.out.println("Menu");
+                activeScreen.handleInputs(entry.getValue());
+
             }
         }
     }
 
-    private void movePlayer(Input input) {
-        System.out.println("in move player");
-        KEY key = input.getKey();
-        switch (key) {
-            case DOWN:
-                player2.moveDown();
-                break;
-            case UP:
-                player2.moveUp();
-                break;
-            case LEFT:
-                player2.moveLeft();
-                break;
-            case RIGHT:
-                player2.moveRight();
-                break;
-            case A:
-                player1.moveLeft();
-                break;
-            case S:
-                player1.moveDown();
-                break;
-            case W:
-                player1.moveUp();
-                break;
-            case D:
-                player1.moveRight();
-        }
-
-    }
 }

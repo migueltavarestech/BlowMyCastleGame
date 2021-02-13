@@ -19,7 +19,8 @@ public enum KEY {
     F11(KeyboardEvent.KEY_F11),        //Decrease sound volume
     F12(KeyboardEvent.KEY_F12),        //Increase sound volume
     F10(KeyboardEvent.KEY_F10),        //Sound mute / un-mute
-    P(KeyboardEvent.KEY_P);
+    P(KeyboardEvent.KEY_P),
+    ZERO(KeyboardEvent.KEY_0);
 
 
     private int keyCode;

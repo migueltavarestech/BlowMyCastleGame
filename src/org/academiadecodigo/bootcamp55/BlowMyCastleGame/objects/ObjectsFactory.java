@@ -1,8 +1,10 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GameLevel;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 
 import java.util.concurrent.TimeUnit;
@@ -15,22 +17,8 @@ public class ObjectsFactory {
     private Wall[] wall;
 
     public void init(GameLevel gameLevel)  {
-        switch (gameLevel) {
-            case LEVEL1:
-                bombs = 10;
-                walls = 10;
-                break;
-            case LEVEL2:
-                bombs = 15;
-                walls = 15;
-                break;
-            case LEVEL3:
-                bombs = 20;
-                walls = 20;
-                break;
-        }
-        this.bombs = bombs;
-        this.walls = walls;
+        this.bombs = gameLevel.getBomb();
+        this.walls = gameLevel.getWall();
     }
 
     public void createCastles() {
@@ -61,4 +49,44 @@ public class ObjectsFactory {
     /** create initial set-up of wall bricks
      *
      */
+
+    public void createWalls(int nrPlayer) {
+        wall = new Wall[this.walls * 2];
+        Position pos;
+        int deltaPos = 1;
+
+        for (int i = 0; i < wall.length / 2; i++) {
+            pos = new Position(1 + i * deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+
+        }
+
+        for (int i = wall.length / 2; i < wall.length; i++) {
+//            System.out.println(i);
+            pos = new Position(24 + (i - wall.length) * deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+        }
+    }
+
+
+ /*
+    public Wall createWalls(int nrplayer){
+        wall = new Wall[this.walls*2];
+        Position pos;
+        int deltaPos = 1;
+
+        for (int i=0; i < wall.length/2; i++){
+            pos = new Position(1 + i*deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+
+        }
+
+        for (int i = wall.length/2; i < wall.length; i++){
+//            System.out.println(i);
+            pos = new Position(24 + (i-wall.length)*deltaPos, 14);
+            wall[i] = new Wall(pos, WallType.WOOD);
+        }
+
+    }
+*/
 }

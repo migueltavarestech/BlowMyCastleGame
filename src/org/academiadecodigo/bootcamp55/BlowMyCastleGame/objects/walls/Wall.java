@@ -1,15 +1,19 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.awt.*;
 
 public class Wall extends GameObjects implements Destroyable {
 
     private WallType wallType;
     private int wallDamage;
     private boolean destroyed = false;
-    private Grid pos;
+    private Position pos;
 
     /**
      * Creates a new wall
@@ -17,17 +21,19 @@ public class Wall extends GameObjects implements Destroyable {
      * @param wallType      the type of wall
      */
 
-    public Wall(Grid pos, WallType wallType) {
+    public Wall(Position pos, WallType wallType) {
         this.pos = pos;
         this.wallType = wallType;
+        drawbombs();
 
 //        pos.setColor(wallType.getColor())
 
     }
 
-    /**
-     * constructors a new wall  (wallType and initial position on the grid)
-     */
+    private void drawbombs() {
+        Picture wall = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
+        wall.draw();
+    }
 
 
     @Override
