@@ -7,6 +7,9 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 public class Inventory {
 
     private Picture bombIcon;
@@ -17,6 +20,7 @@ public class Inventory {
     private Text wallsNumText;
     private Rectangle bombsTextBackground;
     private Rectangle wallsTextBackground;
+
 
     public Inventory(int bombsNumber, int wallsNumber) {
        this.bombsNumber = bombsNumber;
