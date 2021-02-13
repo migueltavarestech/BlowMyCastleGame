@@ -60,4 +60,20 @@ public class Inventory {
         wallsTextBackground.fill();
         wallsNumText.draw();
     }
+
+    public void useBomb(){
+        bombsNumber -= 1;
+    }
+
+    public void useWall(){
+        wallsNumber += 1;
+    }
+
+    public void incrementBomb(){
+        bombsNumber += 1;
+    }
+
+    public void incrementWall(){
+        wallsNumber += 1;
+    }
 }
