@@ -6,14 +6,13 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
-
 public class Wall extends GameObjects implements Destroyable {
 
     private WallType wallType;
-    private int wallDamage;
+    private int wallHealth;
     private boolean destroyed = false;
     private Position pos;
+    private Picture wallIcon;
 
     /**
      * Creates a new wall
@@ -24,15 +23,15 @@ public class Wall extends GameObjects implements Destroyable {
     public Wall(Position pos, WallType wallType) {
         this.pos = pos;
         this.wallType = wallType;
-        drawbombs();
+        drawWalls();
 
 //        pos.setColor(wallType.getColor())
 
     }
 
-    private void drawbombs() {
-        Picture wall = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
-        wall.draw();
+    private void drawWalls() {
+        wallIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
+        wallIcon.draw();
     }
 
 
@@ -40,10 +39,14 @@ public class Wall extends GameObjects implements Destroyable {
     public void hit(int hit) {
 
         if (!destroyed) {
-            wallDamage--;
+            wallHealth--;
 
-            if (wallDamage == 0) {
+            if (wallHealth == 0) {
                 destroyed = true;
+            } else if (wallHealth <= 35) {
+                wallIcon.load("/Pictures/woodWall35.png");
+            } else if (wallHealth <= 75) {
+                wallIcon.load("/Pictures/woodWall75.png");
             }
         }
 

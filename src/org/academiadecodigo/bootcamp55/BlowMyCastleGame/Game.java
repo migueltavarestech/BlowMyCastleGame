@@ -12,7 +12,7 @@ public class Game {
     public Game() {
     }
 
-    public void init() throws InterruptedException {
+    public void init() {
  //       Grid grid = new Grid();
 //        grid.init();
         //       MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
@@ -25,9 +25,9 @@ public class Game {
 
     }
 
-        public void start() throws InterruptedException {
-            player1 = new Player();
-            player2 = new Player();
+        public void start() {
+            player1 = new Player(1);
+            player2 = new Player(2);
 
             Engine engine = new Engine(player1, player2);
             engine.init();

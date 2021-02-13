@@ -39,8 +39,8 @@ public class GameScreen extends AbstractScreen implements Screens {
     @Override
     public void show() {
         // players
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player(1);
+        player2 = new Player(2);
         // wall bricks
         setUpWalls();
     }
@@ -61,15 +61,15 @@ public class GameScreen extends AbstractScreen implements Screens {
         nrWalls1 = gameLevel.getWall();
         nrWalls2 = gameLevel.getWall();
 
-        Picture pictureWall = new Picture(40, 40, "resources/Pictures/walls.png");
-        pictureWall.draw();
-        text = new Text(80, 40, "   Available Walls: " + nrWalls1);
-        text.draw();
-
-        Picture pictureWall2 = new Picture(800, 40, "resources/Pictures/walls.png");
-        pictureWall2.draw();
-        text1 = new Text(800, 40, "   Available Walls: " + nrWalls2);
-        text1.draw();
+//        Picture pictureWall = new Picture(40, 40, "resources/Pictures/walls.png");
+//        pictureWall.draw();
+//        text = new Text(80, 40, "   Available Walls: " + nrWalls1);
+//        text.draw();
+//
+//        Picture pictureWall2 = new Picture(800, 40, "resources/Pictures/walls.png");
+//        pictureWall2.draw();
+//        text1 = new Text(800, 40, "   Available Walls: " + nrWalls2);
+//        text1.draw();
     }
 
     private void placeWalls(Player player) {
