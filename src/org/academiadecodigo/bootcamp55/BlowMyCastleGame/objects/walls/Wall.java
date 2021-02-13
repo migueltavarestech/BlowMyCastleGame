@@ -4,7 +4,10 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import static org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music.soundBombExplosion;
 
 public class Wall extends GameObjects implements Destroyable {
 
@@ -52,6 +55,7 @@ public class Wall extends GameObjects implements Destroyable {
 
 
     }
+
 
     @Override
     public boolean isDestroyed() {

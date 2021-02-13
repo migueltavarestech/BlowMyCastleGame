@@ -43,19 +43,42 @@ public class Bomb extends GameObjects {
         bombIcon.draw();
     }
 
-    public void launchBomb() {
+    public void launchBomb(final GridDirection lastDirection) {
         final Runnable beeper = new Runnable() {
             public void run() {
-                bombThrowLogic();
+                bombThrowLogic(lastDirection);
 
             }};
         final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper,150,200,TimeUnit.MILLISECONDS);
     }
 
-    public void bombThrowLogic() {
-        if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
-            bombIcon.translate(-bombAvatar, 0);
-            pos.moveInDirection(GridDirection.LEFT);
+    public void bombThrowLogic(GridDirection lastDirection) {
+        if (lastDirection == GridDirection.LEFT){
+            if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
+                bombIcon.translate(-bombAvatar, 0);
+                pos.moveInDirection(GridDirection.LEFT);
+            }
         }
+        else if(lastDirection == GridDirection.RIGHT){
+            if(!Position.isNextCellOccupied(GridDirection.RIGHT,pos)) {
+                bombIcon.translate(bombAvatar, 0);
+                pos.moveInDirection(GridDirection.RIGHT);
+            }
+        }
+        else if (lastDirection == GridDirection.DOWN) {
+            if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
+                bombIcon.translate(0, bombAvatar);
+                pos.moveInDirection(GridDirection.DOWN);
+            }
+        }
+        else if (lastDirection == GridDirection.UP) {
+            if (!Position.isNextCellOccupied(GridDirection.UP, pos)) {
+                bombIcon.translate(0, -bombAvatar);
+                pos.moveInDirection(GridDirection.UP);
+            }
+        }
+       // else {
+           // bombHit();
+      //  }
     }
 }
