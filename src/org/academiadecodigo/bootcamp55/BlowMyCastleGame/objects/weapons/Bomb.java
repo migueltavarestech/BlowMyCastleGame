@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 

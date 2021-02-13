@@ -20,14 +20,14 @@ public class Game {
 //        createObjects();
         Engine engineSelect = new Engine();
         engineSelect.init();
-        engineSelect.startEngine();
+//        engineSelect.startEngine();
 
 
     }
 
         public void start() {
-            player1 = new Player();
-            player2 = new Player();
+            player1 = new Player(1);
+            player2 = new Player(2);
 
             Engine engine = new Engine(player1, player2);
             engine.init();

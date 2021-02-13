@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
@@ -69,24 +69,4 @@ public class ObjectsFactory {
     }
 
 
- /*
-    public Wall createWalls(int nrplayer){
-        wall = new Wall[this.walls*2];
-        Position pos;
-        int deltaPos = 1;
-
-        for (int i=0; i < wall.length/2; i++){
-            pos = new Position(1 + i*deltaPos, 14);
-            wall[i] = new Wall(pos, WallType.WOOD);
-
-        }
-
-        for (int i = wall.length/2; i < wall.length; i++){
-//            System.out.println(i);
-            pos = new Position(24 + (i-wall.length)*deltaPos, 14);
-            wall[i] = new Wall(pos, WallType.WOOD);
-        }
-
-    }
-*/
 }

@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen;
+package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -16,33 +16,42 @@ public class Inventory {
     private Text wallsNumText;
     private Rectangle bombsTextBackground;
     private Rectangle wallsTextBackground;
+    private int nrPlayer;
 
-    public Inventory(int bombsNumber, int wallsNumber) {
+    public Inventory(int bombsNumber, int wallsNumber, int nrPlayer) {
         this.bombsNumber = bombsNumber;
         this.wallsNumber = wallsNumber;
+        this.nrPlayer = nrPlayer;
     }
 
-    public void initialDraw(int playerNum){
-        if (playerNum == 1) {
-            bombIcon = new Picture(Grid.columnToX(6)+Grid.getPadding(),Grid.rowToY(16)+Grid.getPadding()+20,"bombInventory.png");
+    public void initialDraw() {
+
+        if (nrPlayer == 1){
+
+            bombIcon = new Picture(Grid.columnToX(6) + Grid.getPadding(), Grid.rowToY(16) + Grid.getPadding() + 20, "bombInventory.png");
             bombIcon.draw();
             drawBombText();
 
-            wallsIcon = new Picture(bombIcon.getX()+40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon = new Picture(bombIcon.getX() + 40, bombIcon.getY(), "resources/woodWallInventory.png");
             wallsIcon.draw();
             drawWallsInfo();
-        } else {
-            bombIcon = new Picture(Grid.columnToX(18)-10,Grid.rowToY(16)+Grid.getPadding()+20,"bombInventory.png");
+
+            return;
+            }
+        if (nrPlayer == 2) {
+
+            bombIcon = new Picture(Grid.columnToX(18) - 10, Grid.rowToY(16) + Grid.getPadding() + 20, "bombInventory.png");
             bombIcon.draw();
             drawBombText();
 
-            wallsIcon = new Picture(bombIcon.getX()-40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon = new Picture(bombIcon.getX() - 40, bombIcon.getY(), "resources/woodWallInventory.png");
             wallsIcon.draw();
             drawWallsInfo();
         }
+
     }
 
-    private void drawBombText(){
+    public void drawBombText(){
         bombsNumText = new Text(bombIcon.getX()+15, bombIcon.getY()-10, "" + bombsNumber);
         bombsNumText.grow(2,2);
 
@@ -66,7 +75,11 @@ public class Inventory {
     }
 
     public void useWall(){
-        wallsNumber += 1;
+        if (wallsNumber >0){
+            wallsNumber--;
+            drawWallsInfo();
+        }
+
     }
 
     public void incrementBomb(){
@@ -75,5 +88,21 @@ public class Inventory {
 
     public void incrementWall(){
         wallsNumber += 1;
+    }
+
+    public void hide() {
+
+        bombIcon.delete();
+        bombsNumText.delete();
+        bombsTextBackground.delete();
+
+        wallsIcon.delete();
+        wallsNumText.delete();
+        wallsTextBackground.delete();
+
+    }
+
+    public int getWallsNumber() {
+        return wallsNumber;
     }
 }
