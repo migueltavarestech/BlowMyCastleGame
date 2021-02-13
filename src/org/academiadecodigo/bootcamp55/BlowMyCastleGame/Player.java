@@ -13,6 +13,7 @@ public class Player {
     private static int count = 0;
     private Position pos;
     private Inventory inventory;
+    private GridDirection lastDirection;
 
     //gun inventory
     private static int playerBombs = 0;
@@ -42,6 +43,7 @@ public class Player {
 
     public void moveRight() {
         if (!Position.isNextCellOccupied(GridDirection.RIGHT, pos)) {
+            lastDirection = GridDirection.RIGHT;
             playerAvatar.translate(avatarSize, 0);
             pos.moveInDirection(GridDirection.RIGHT);
         }
@@ -49,6 +51,7 @@ public class Player {
 
     public void moveLeft() {
         if (!Position.isNextCellOccupied(GridDirection.LEFT, pos)) {
+            lastDirection = GridDirection.LEFT;
             playerAvatar.translate(-avatarSize, 0);
             pos.moveInDirection(GridDirection.LEFT);
         }
@@ -56,6 +59,7 @@ public class Player {
 
     public void moveUp() {
         if (!Position.isNextCellOccupied(GridDirection.UP, pos)) {
+            lastDirection = GridDirection.UP;
             playerAvatar.translate(0, -avatarSize);
             pos.moveInDirection(GridDirection.UP);
         }
@@ -63,6 +67,7 @@ public class Player {
 
     public void moveDown() {
         if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
+            lastDirection = GridDirection.DOWN;
             playerAvatar.translate(0,avatarSize);
             pos.moveInDirection(GridDirection.DOWN);
         }
@@ -77,9 +82,9 @@ public class Player {
         return playerBombs;
     }
 
-
-
     public Position getPos() {
         return pos;
     }
+
+    public GridDirection getLastDirection() {return lastDirection;}
 }
