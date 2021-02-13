@@ -65,8 +65,8 @@ public class Bomb extends GameObjects {
                 pos.moveInDirection(GridDirection.RIGHT);
             }
         }
-        else if (lastDirection == GridDirection.DOWN){
-            if(!Position.isNextCellOccupied(GridDirection.DOWN,pos)) {
+        else if (lastDirection == GridDirection.DOWN) {
+            if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
                 bombIcon.translate(0, bombAvatar);
                 pos.moveInDirection(GridDirection.DOWN);
             }
@@ -76,6 +76,9 @@ public class Bomb extends GameObjects {
                 bombIcon.translate(0, -bombAvatar);
                 pos.moveInDirection(GridDirection.UP);
             }
+        }
+        else {
+            bombHit();
         }
     }
 }
