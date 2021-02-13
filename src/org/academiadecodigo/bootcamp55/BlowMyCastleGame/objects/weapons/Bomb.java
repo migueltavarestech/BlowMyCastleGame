@@ -65,44 +65,47 @@ public class Bomb extends GameObjects {
             if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
                 bombIcon.translate(-bombAvatar, 0);
                 pos.moveInDirection(GridDirection.LEFT);
+            } else {
+                bombHit(lastDirection);
             }
-    public void bombThrowLogic() {
-        if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
-            bombIcon.translate(-bombAvatar, 0);
-            pos.moveInDirection(GridDirection.LEFT);
         }
-        else if(lastDirection == GridDirection.RIGHT){
+         else if(lastDirection == GridDirection.RIGHT){
             if(!Position.isNextCellOccupied(GridDirection.RIGHT,pos)) {
                 bombIcon.translate(bombAvatar, 0);
                 pos.moveInDirection(GridDirection.RIGHT);
+            } else {
+                bombHit(lastDirection);
             }
         }
         else if (lastDirection == GridDirection.DOWN) {
             if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
                 bombIcon.translate(0, bombAvatar);
                 pos.moveInDirection(GridDirection.DOWN);
+            } else {
+                bombHit(lastDirection);
             }
         }
         else if (lastDirection == GridDirection.UP) {
             if (!Position.isNextCellOccupied(GridDirection.UP, pos)) {
                 bombIcon.translate(0, -bombAvatar);
                 pos.moveInDirection(GridDirection.UP);
+            } else {
+                bombHit(lastDirection);
             }
-        } else {
-            bombHit();
         }
     }
 
-    public void bombHit(){
+    public void bombHit (GridDirection lastDirection) {
         scheduler.shutdownNow();
         if(isItAWall()){
            // wall.hit(damage);
-        } else if (isItACastle()){
+            Music.soundBombExplosion();
+        } else if (isItACastle(lastDirection)){
             castleList.get(castleNum).hit(15);
             System.out.println("it's a hit!");
+            Music.soundBombExplosion();
         }
         bombIcon.delete();
-        Music.soundBombExplosion();
     }
 
     public boolean isItAWall(){
@@ -110,10 +113,10 @@ public class Bomb extends GameObjects {
         return false;
     }
 
-    public boolean isItACastle(){
+    public boolean isItACastle(GridDirection lastDirection){
         castleList = Castle.getList();
         for (int i=0; i<2; i++) {
-            if (castleList.get(i).isCastle(pos)) {
+            if (castleList.get(i).isCastle(pos, lastDirection)) {
                 castleNum = i;
                 return true;
             }

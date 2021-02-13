@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
@@ -109,12 +110,15 @@ public class Castle extends GameObjects implements Destroyable {
 
     public static LinkedList<Castle> getList(){return castleList;}
 
-    public boolean isCastle(Position bombPos){
+    public boolean isCastle(Position bombPos, GridDirection direction){
         for (Position position : posArr) {
-            if(position.getCol() == bombPos.getCol()-1 &&
-            position.getRow() == bombPos.getRow()) {
-                return true;
+            if(direction == GridDirection.RIGHT) {
+                if (position.getCol() == bombPos.getCol() - 1 &&
+                        position.getRow() == bombPos.getRow()) {
+                    return true;
+                }
             }
+            // Implementar LEFT (Col + 1) / UP (Row -1) / DOWN (Row + 1)
         }
         return false;
     }
