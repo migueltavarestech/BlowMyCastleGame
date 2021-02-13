@@ -24,6 +24,8 @@ public class Bomb extends GameObjects {
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private boolean hitHappened;
+    private LinkedList<Castle> castleList;
+    private int castleNum;
 
     public Bomb() {
 
@@ -72,11 +74,11 @@ public class Bomb extends GameObjects {
         if(isItAWall()){
            // wall.hit(damage);
         } else if (isItACastle()){
-            // castle.hit(damage);
+            castleList.get(castleNum).hit(15);
             System.out.println("it's a hit!");
         }
         bombIcon.delete();
-        Music.soundPickUpBomb();
+        Music.soundBombExplosion();
     }
 
     public boolean isItAWall(){
@@ -85,11 +87,10 @@ public class Bomb extends GameObjects {
     }
 
     public boolean isItACastle(){
-        LinkedList<Castle> castleList = Castle.getList();
+        castleList = Castle.getList();
         for (int i=0; i<2; i++) {
-            castleList.get(i).isCastle(pos);
-            if (castleList.get(i).getPos().getCol() == pos.getCol() &&
-            castleList.get(i).getPos().getRow() == pos.getRow()) {
+            if (castleList.get(i).isCastle(pos)) {
+                castleNum = i;
                 return true;
             }
         }
