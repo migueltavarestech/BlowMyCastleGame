@@ -82,6 +82,9 @@ public class Engine  implements KeyboardHandler {
 
     public void startEngine(){
 
+        music = new Music();
+        music.playMusic();
+
         activeScreen.show();
 
         while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
