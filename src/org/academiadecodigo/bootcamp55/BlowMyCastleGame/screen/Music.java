@@ -37,9 +37,9 @@ public class Music{
         try {
             File file = new File("resources/sounds/pick-up-bomb2.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
+            Clip clip2 = AudioSystem.getClip();
+            clip2.open(audioStream);
+            clip2.start();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             System.err.println(e.getMessage());
         }
@@ -49,9 +49,9 @@ public class Music{
         try {
             File file = new File("resources/sounds/explosion.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
+            Clip clip3 = AudioSystem.getClip();
+            clip3.open(audioStream);
+            clip3.start();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             System.err.println(e.getMessage());
         }
@@ -61,9 +61,9 @@ public class Music{
         try {
             File file = new File("resources/sounds/put-down-block.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
+            Clip clip4 = AudioSystem.getClip();
+            clip4.open(audioStream);
+            clip4.start();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             System.err.println(e.getMessage());
         }

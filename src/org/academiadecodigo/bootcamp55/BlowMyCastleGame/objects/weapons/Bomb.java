@@ -5,13 +5,14 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Bomb extends GameObjects {
 
@@ -22,6 +23,7 @@ public class Bomb extends GameObjects {
     private Position pos;
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private boolean hitHappened;
 
     public Bomb() {
 
@@ -44,18 +46,53 @@ public class Bomb extends GameObjects {
     }
 
     public void launchBomb() {
-        final Runnable beeper = new Runnable() {
-            public void run() {
-                bombThrowLogic();
-
-            }};
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper,150,200,TimeUnit.MILLISECONDS);
+        try {
+            final Runnable beeper = new Runnable() {
+                public void run() {
+                    bombThrowLogic();
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 150, 200, TimeUnit.MILLISECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("test");
+        }
     }
 
     public void bombThrowLogic() {
         if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
             bombIcon.translate(-bombAvatar, 0);
             pos.moveInDirection(GridDirection.LEFT);
+        } else {
+            bombHit();
         }
+    }
+
+    public void bombHit(){
+        scheduler.shutdownNow();
+        if(isItAWall()){
+           // wall.hit(damage);
+        } else if (isItACastle()){
+            // castle.hit(damage);
+            System.out.println("it's a hit!");
+        }
+        bombIcon.delete();
+        Music.soundPickUpBomb();
+    }
+
+    public boolean isItAWall(){
+        // Ask wall class
+        return false;
+    }
+
+    public boolean isItACastle(){
+        LinkedList<Castle> castleList = Castle.getList();
+        for (int i=0; i<2; i++) {
+            castleList.get(i).isCastle(pos);
+            if (castleList.get(i).getPos().getCol() == pos.getCol() &&
+            castleList.get(i).getPos().getRow() == pos.getRow()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
