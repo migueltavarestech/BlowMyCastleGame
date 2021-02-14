@@ -9,7 +9,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class ObjectsFactory {
 
@@ -17,6 +17,7 @@ public class ObjectsFactory {
     private int walls = 0;
     private Bomb[] bomb;
     private Wall[] wall;
+    private final ScheduledExecutorService scheduler3 = Executors.newScheduledThreadPool(1);
 
     public void init(GameLevel gameLevel)  {
         this.bombs = gameLevel.getBomb();
@@ -33,18 +34,19 @@ public class ObjectsFactory {
     }
 
     public void createBombs() {
-        // Wait 10 seconds before creating first bombs
-//        try {
-//            TimeUnit.SECONDS.sleep(5);
-//        } catch (InterruptedException ex) {
-//            System.out.println("Interrupted Exception happened.");
-//            Thread.currentThread().interrupt();
-//        }
-
-        // Create bombs according with chosen GameLevel
         bomb = new Bomb[bombs];
-        for (int i=0; i < bomb.length; i++) {
-            bomb[i] = new Bomb();
+        try {
+            final Runnable beeper3 = new Runnable() {
+                public void run() {
+                    for (int i=0; i < bomb.length; i++) {
+                        bomb[i] = new Bomb();
+                    }
+                    scheduler3.shutdownNow();
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler3.scheduleAtFixedRate(beeper3, 20, 1, TimeUnit.SECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("test");
         }
     }
 

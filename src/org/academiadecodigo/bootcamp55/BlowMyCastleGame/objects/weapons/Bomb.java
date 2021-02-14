@@ -29,7 +29,7 @@ public class Bomb extends GameObjects {
 
     public Bomb() {
 
-        int randomCol = (int)(Math.random()*(19-6)+6);
+        int randomCol = (int)(Math.random()*(17-8)+8);
         int randomRow = (int)(Math.random()*(16-1)+1);
 
         bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
@@ -151,7 +151,6 @@ public class Bomb extends GameObjects {
         } catch (RejectedExecutionException ex) {
             System.out.println("test");
         }
-//        scheduler.shutdownNow();
     }
 
 
