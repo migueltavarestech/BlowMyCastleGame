@@ -21,6 +21,8 @@ public class Inventory {
     private Rectangle bombsTextBackground;
     private Rectangle wallsTextBackground;
     private int nrPlayer;
+    private static final String bombIconPath = "/Users/MiguelTavares/BlowMyCastleGame/resources/bombInventory.png";
+    private static final String iconPath = "/Users/MiguelTavares/BlowMyCastleGame/resources/woodWallInventory.png";
 
     public Inventory(int bombsNumber, int wallsNumber, int nrPlayer) {
         this.bombsNumber = bombsNumber;
@@ -32,11 +34,11 @@ public class Inventory {
 
         if (nrPlayer == 1){
 
-            bombIcon = new Picture(Grid.columnToX(6) + Grid.getPadding(), Grid.rowToY(16) + Grid.getPadding() + 20, "bombInventory.png");
+            bombIcon = new Picture(Grid.columnToX(6) + Grid.getPadding(), Grid.rowToY(16) + Grid.getPadding() + 20, bombIconPath);
             bombIcon.draw();
             drawBombText();
 
-            wallsIcon = new Picture(bombIcon.getX() + 40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon = new Picture(bombIcon.getX() + 40, bombIcon.getY(), iconPath);
             wallsIcon.draw();
             drawWallsInfo();
 
@@ -44,11 +46,11 @@ public class Inventory {
             }
         if (nrPlayer == 2) {
 
-            bombIcon = new Picture(Grid.columnToX(18) - 10, Grid.rowToY(16) + Grid.getPadding() + 20, "bombInventory.png");
+            bombIcon = new Picture(Grid.columnToX(18) - 10, Grid.rowToY(16) + Grid.getPadding() + 20, bombIconPath);
             bombIcon.draw();
             drawBombText();
 
-            wallsIcon = new Picture(bombIcon.getX() - 40, bombIcon.getY(), "resources/woodWallInventory.png");
+            wallsIcon = new Picture(bombIcon.getX() - 40, bombIcon.getY(), iconPath);
             wallsIcon.draw();
             drawWallsInfo();
         }

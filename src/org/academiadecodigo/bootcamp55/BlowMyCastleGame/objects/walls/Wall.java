@@ -23,6 +23,7 @@ public class Wall extends GameObjects implements Destroyable {
     private Picture wallIcon;
     private static Position[] posArr = new Position[0];
     private static LinkedList<Wall> wallList = new LinkedList();
+    private static final String iconPath = "/Users/MiguelTavares/BlowMyCastleGame/resources/Pictures/woodWall.png";
 
     /**
      * Creates a new wall
@@ -44,7 +45,7 @@ public class Wall extends GameObjects implements Destroyable {
      * draw the wall in the grid for the wall pos
      */
     private void drawWalls() {
-        wallIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), "resources/Pictures/woodWall.png" );
+        wallIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()), iconPath );
         wallIcon.draw();
     }
 
