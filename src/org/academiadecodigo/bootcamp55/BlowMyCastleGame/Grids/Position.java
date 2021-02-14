@@ -14,6 +14,7 @@ public class Position {
     private int row;
     private boolean cellOccupied;
     private boolean cellBomb;
+    private static Position[] occupiedCells;
 
     public Position(int col, int row) {
         this.col = col;
@@ -97,7 +98,7 @@ public class Position {
     }
 
     public static boolean isNextCellOccupied(GridDirection direction, Position pos) {
-        Position[] occupiedCells = getOccupiedCells();
+        occupiedCells = getOccupiedCells();
 
         boolean isNextCellOccupied = false;
         int currentCol = pos.getCol();
@@ -134,6 +135,11 @@ public class Position {
         }
 
         return isNextCellOccupied;
+    }
+
+    public static void clearPosArr() {
+        Position[] tempArr = new Position[0];
+        occupiedCells = tempArr;
     }
 
     //code to catch bombs
