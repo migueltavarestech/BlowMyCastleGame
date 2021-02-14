@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 import java.util.*;
 import java.util.Map.Entry;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.AbstractGames;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.GameState;
@@ -171,6 +171,7 @@ public class Engine  implements KeyboardHandler {
         synchronized (this.inputs) {
             this.inputs.remove(keyboardEvent.getKey());
         }
+//        activeScreen.process(new Input(key, Input.Type.KEY_RELEASE));
     }
 
     private void addListener(Keyboard keyboard, int key, KeyboardEventType type) {

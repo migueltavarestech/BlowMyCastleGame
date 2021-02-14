@@ -1,6 +1,4 @@
-package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
-
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
+package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
 public class Position {
 
