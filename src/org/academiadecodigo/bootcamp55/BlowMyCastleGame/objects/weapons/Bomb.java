@@ -19,8 +19,6 @@ public class Bomb extends GameObjects {
     private Picture bombIcon;
     private Picture explosionIcon;
     private int bombAvatar = 40;
-    private int bombCol;
-    private int bombRow;
     private Position pos;
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -30,15 +28,11 @@ public class Bomb extends GameObjects {
 
     public Bomb() {
 
-        bombCol = (int)(Math.random()*(750-250)+250);
-        bombRow = (int)(Math.random()*((700- Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
-
-//        bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
         int randomCol = (int)(Math.random()*(19-6)+6);
         int randomRow = (int)(Math.random()*(16-1)+1);
 
-//        bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
-//        bombIcon.draw();
+        bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
+        bombIcon.draw();
  //       pos = new Position(bombCol/40, bombRow/40); // add
 //        bombCol = 200;
 //        bombRow = 200;

@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
@@ -80,6 +81,12 @@ public class Engine  implements KeyboardHandler {
         /**
          * create field bombs after some seconds
          */
+//        try {
+//            TimeUnit.SECONDS.sleep(5);
+//        } catch (InterruptedException ex) {
+//            System.out.println("Interrupted Exception happened.");
+//            Thread.currentThread().interrupt();
+//        }
         factory.createBombs();
 
         stopGame = false;
