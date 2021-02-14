@@ -16,6 +16,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.ObjectsFactory;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 import java.util.*;
@@ -61,12 +62,14 @@ public class GameScreen extends AbstractScreen implements Screens {
          * create inventory dependent on GameLevel and display
          * set of players and assign initial inventory to each player
          */
-        System.out.println(engine.getGameState());
+        // System.out.println(engine.getGameState());
+
+        Picture canvas = new Picture(Grid.getPadding(), Grid.getPadding(), "background2.png");
+        canvas.draw();
 
         switch (engine.getGameState()){
 
             case TWO_PLAYER:
-                System.out.println("Two Player Mode");
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 2));
                 player1 = new Player(1);
@@ -78,7 +81,6 @@ public class GameScreen extends AbstractScreen implements Screens {
                 break;
 
             case PRATICE:
-                System.out.println("practice");
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
                 player1 = new Player(1);
                 players.add(player1);
