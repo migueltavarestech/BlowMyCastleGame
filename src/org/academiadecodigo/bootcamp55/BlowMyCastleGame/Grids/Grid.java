@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
@@ -18,7 +19,7 @@ public class Grid {
     private static final int totalCols = 25;
     private static final int totalRows = 18;
     private static Position[] occupiedCells = new Position[0];
-    private static List<Position> occupiedBombs = new LinkedList<>();
+    private static List<Bomb> occupiedBombs = new LinkedList<>();
 
     public Grid() {
         this.width = totalCols * cellSize;
@@ -81,11 +82,11 @@ public class Grid {
         return occupiedCells;
     }
 
-    public static void addOccupiedBombs(Position element){
+    public static void addOccupiedBombs(Bomb element){
         occupiedBombs.add(element);
     }
 
-    public static List<Position> getOccupiedBombs() {
+    public static List<Bomb> getOccupiedBombs() {
         return occupiedBombs;
     }
 

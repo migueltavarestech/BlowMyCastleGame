@@ -39,7 +39,7 @@ public class Bomb extends GameObjects {
         pos = new Position(randomCol, randomRow);
 
         bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
-        Grid.addOccupiedBombs(pos);
+        Grid.addOccupiedBombs(this);
         bombIcon.draw();
         // System.out.println("pos bomb//col: " + pos.getCol() + "//row: " + pos.getRow());
     }
@@ -117,7 +117,8 @@ public class Bomb extends GameObjects {
         }
         bombIcon.delete();
     }
-    public void hide(Position pos){
+    public void hide(){
+        // Iterate through all the bombs
         bombIcon.delete();
     }
 
