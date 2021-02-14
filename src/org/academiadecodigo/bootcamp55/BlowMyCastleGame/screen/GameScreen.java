@@ -30,7 +30,7 @@ public class GameScreen extends AbstractScreen implements Screens {
     private int nrWalls2;
 
     private List<Wall> listofKeys;
-    private List<Inventory> inventory;
+    private List<Inventory> inventories;
     private List<Player> players;
 
     private int nrPlayers = 2;
@@ -39,7 +39,7 @@ public class GameScreen extends AbstractScreen implements Screens {
         super(engine);
         gameElements = new HashMap<>();
         listofKeys = new ArrayList<>();
-        inventory = new LinkedList<>();
+        inventories = new LinkedList<>();
         players = new LinkedList<>();
     }
 
@@ -47,22 +47,25 @@ public class GameScreen extends AbstractScreen implements Screens {
     public void show() {
 
         /**
-         * creates set of players
-         */
-        player1 = new Player(1);         // will receive Player number
-        player2 = new Player(2);         // with player number
-        players.add(player1);
-        players.add(player2);
-
-        /**
          * create inventory dependent on GameLeval and display
          */
-        inventory.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
-        inventory.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
+        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
+        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
 
-        for (Inventory entry : inventory){
+        for (Inventory entry : inventories){
             entry.initialDraw();
         }
+
+        /**
+         * creates set of players and sets initial Inventory
+         */
+        player1 = new Player(1);
+        player2 = new Player(2);
+        players.add(player1);
+        players.add(player2);
+        players.get(0).setInventory(inventories.get(0));
+        players.get(1).setInventory(inventories.get(1));
+
     }
 
     @Override
@@ -77,25 +80,27 @@ public class GameScreen extends AbstractScreen implements Screens {
         }
         players.clear();
 
-        for (Inventory entry : inventory){
+        for (Inventory entry : inventories){
             entry.hide();
         }
-        inventory.clear();
+        inventories.clear();
 
         for (Wall w : gameElements.keySet()){
             w.hideWall();
         }
+
+        gameElements.clear();
     }
 
     private void placeWalls(Player player) {
 
-        if (player.equals(player1)){
+        if (player.equals(players.get(0))){
 
-            if (inventory.get(0).getWallsNumber() != 0) {
+            if (inventories.get(0).getWallsNumber() != 0) {
 
                 Wall newWall =new Wall(player.getPos(), WallType.WOOD);
                 gameElements.put(newWall, player);
-                inventory.get(0).useWall();
+                inventories.get(0).useWall();
 
                 Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
                 setOcuppiedPos(temp);
@@ -103,13 +108,13 @@ public class GameScreen extends AbstractScreen implements Screens {
                 return;
             }
         }
-        if (player.equals(player2)){
+        if (player.equals(players.get(1))){
 
-            if (inventory.get(1).getWallsNumber() != 0)
+            if (inventories.get(1).getWallsNumber() != 0)
             {
                 Wall newWall =new Wall(player.getPos(), WallType.WOOD);
                 gameElements.put(newWall, player);
-                inventory.get(1).useWall();
+                inventories.get(1).useWall();
 
                 Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
 

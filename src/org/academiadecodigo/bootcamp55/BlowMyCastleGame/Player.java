@@ -29,8 +29,6 @@ public class Player {
             playerAvatar = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"/players/player1down.png");
             playerAvatar.draw();
 
- //           inventory = new Inventory(15,10);
- //           inventory.initialDraw(1);
         } else {
             // Second player (Right)
             pos = new Position(20, 8);
@@ -107,7 +105,10 @@ public class Player {
         return playerBombs;
     }
 
+    public void setInventory(Inventory inventory){
+        this.inventory = inventory;
 
+    }
 
     public Position getPos() {
         return pos;

@@ -7,8 +7,6 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class Inventory {
 
@@ -103,15 +101,18 @@ public class Inventory {
 
     public void hide() {
 
-        bombIcon.delete();
-        bombsNumText.delete();
-        bombsTextBackground.delete();
-
         wallsIcon.delete();
         wallsNumText.delete();
         wallsTextBackground.delete();
 
+        bombIcon.delete();
+        bombsNumText.delete();
+        bombsTextBackground.delete();
+
+
+
     }
+
 
     public int getWallsNumber() {
         return wallsNumber;
