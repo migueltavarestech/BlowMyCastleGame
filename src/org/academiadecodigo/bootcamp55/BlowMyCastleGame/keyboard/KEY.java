@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 public enum KEY {
@@ -20,7 +21,9 @@ public enum KEY {
     F12(KeyboardEvent.KEY_F12),        //Increase sound volume
     F10(KeyboardEvent.KEY_F10),        //Sound mute / un-mute
     P(KeyboardEvent.KEY_P),
-    ZERO(KeyboardEvent.KEY_0);
+    ZERO(KeyboardEvent.KEY_0),
+    E(KeyboardEvent.KEY_E),
+;
 
 
     private int keyCode;
