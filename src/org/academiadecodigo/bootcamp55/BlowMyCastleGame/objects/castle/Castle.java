@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 public class Castle extends GameObjects implements Destroyable {
 
-    private int castleHealth = 100;
+    private int castleHealth;
     private boolean destroyed;
     private Picture castleIcon;
     private Picture gameOver = new Picture(Grid.columnToX(8), Grid.rowToY(0), "gameOver2.png");
@@ -30,6 +30,8 @@ public class Castle extends GameObjects implements Destroyable {
 
     public Castle(int castleNumber) {
         this.castleNumber = castleNumber;
+        castleHealth = 100;
+        destroyed = false;
         drawCastles();
         healthBar = new HealthBar(castleNumber);
         castleList.add(this);
@@ -44,6 +46,9 @@ public class Castle extends GameObjects implements Destroyable {
                 castleIcon.load("castle0.png");
                 destroyed = true;
                 gameOver.draw();
+//                for (Castle castle : castleList) {
+//                    castle.clearPosArr();
+//                }
                 Engine.setGameOver(true);
                 // endGame();
                 // set Engine game over
@@ -153,6 +158,15 @@ public class Castle extends GameObjects implements Destroyable {
             }
         }
         return false;
+    }
+
+    public void clearPosArr() {
+        Position[] tempArr = new Position[0];
+        posArr = tempArr;
+    }
+
+    public static void clearCastleList() {
+        castleList.clear();
     }
 
 }

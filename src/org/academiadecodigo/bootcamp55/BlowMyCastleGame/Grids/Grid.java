@@ -103,7 +103,7 @@ public class Grid {
 
 
 
-    public void setCanvasLimits() {
+    public static void setCanvasLimits() {
         // UP Limit
         int y = -1;
         for(int x=0; x<totalCols; x++){
@@ -141,5 +141,6 @@ public class Grid {
         Position[] tempArr = new Position[0];
         occupiedBombs.clear();
         occupiedCells = tempArr;
+        setCanvasLimits();
     }
 }

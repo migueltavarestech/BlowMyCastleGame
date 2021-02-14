@@ -15,8 +15,10 @@ public class HealthBar {
     public HealthBar(int healthBarNumber) {
         this.healthBarNumber = healthBarNumber;
         if (healthBarNumber == 1) {
+            damageTaken = 0;
             drawC1HealthBar();
         } else if (healthBarNumber == 2) {
+            damageTaken = 0;
             drawC2HealthBar();
         }
     }
