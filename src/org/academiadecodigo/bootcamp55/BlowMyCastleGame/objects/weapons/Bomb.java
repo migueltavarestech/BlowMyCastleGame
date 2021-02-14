@@ -114,7 +114,7 @@ public class Bomb extends GameObjects {
             castleList.get(castleNum).hit(15);
             System.out.println("it's a hit!");
             Music.soundBombExplosion();
-            explosionIcon = new Picture(pos.getCol(),pos.getRow(),"explosionIcon.png");
+            explosionIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"explosionIcon.png");
             explosionIcon.draw();
         }
         bombIcon.delete();
@@ -142,6 +142,14 @@ public class Bomb extends GameObjects {
 
     public Position getPos() {
         return this.pos;
+    }
+
+    private void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException ex) {
+            System.out.println("Thread interrupted exception in Bomb.");
+        }
     }
 
 
