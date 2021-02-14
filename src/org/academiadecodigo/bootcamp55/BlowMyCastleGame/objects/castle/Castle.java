@@ -16,6 +16,7 @@ public class Castle extends GameObjects implements Destroyable {
     private int castleHealth = 100;
     private boolean destroyed;
     private Picture castleIcon;
+    private Picture gameOver = new Picture(Grid.columnToX(9), Grid.rowToY(5), "gameOver.png");
     private static int count = 0;
     private HealthBar healthBar;
     private int castleNumber;
@@ -28,7 +29,6 @@ public class Castle extends GameObjects implements Destroyable {
         drawCastles();
         healthBar = new HealthBar();
         castleList.add(this);
-
     }
 
     @Override
@@ -39,6 +39,7 @@ public class Castle extends GameObjects implements Destroyable {
             if (castleHealth <= 0) {
                 castleIcon.load("castle0.png");
                 destroyed = true;
+                gameOver.draw();
                 // set Engine game over
             } else if (castleHealth <= 25) {
                 castleIcon.load("castle25.png");
