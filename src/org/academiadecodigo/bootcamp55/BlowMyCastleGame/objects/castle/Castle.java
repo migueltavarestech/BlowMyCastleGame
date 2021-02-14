@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
+;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
