@@ -11,6 +11,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -64,14 +65,15 @@ public class Bomb extends GameObjects {
     }
 
     public void bombThrowLogic(GridDirection lastDirection) {
-        if (lastDirection == GridDirection.LEFT){
+        try {
+         if (lastDirection == GridDirection.LEFT){
             if(!Position.isNextCellOccupied(GridDirection.LEFT,pos)) {
                 bombIcon.translate(-bombAvatar, 0);
                 pos.moveInDirection(GridDirection.LEFT);
             } else {
                 bombHit(lastDirection);
             }
-        }
+         }
          else if(lastDirection == GridDirection.RIGHT){
             if(!Position.isNextCellOccupied(GridDirection.RIGHT,pos)) {
                 bombIcon.translate(bombAvatar, 0);
@@ -79,23 +81,27 @@ public class Bomb extends GameObjects {
             } else {
                 bombHit(lastDirection);
             }
-        }
-        else if (lastDirection == GridDirection.DOWN) {
+         }
+         else if (lastDirection == GridDirection.DOWN) {
             if (!Position.isNextCellOccupied(GridDirection.DOWN, pos)) {
                 bombIcon.translate(0, bombAvatar);
                 pos.moveInDirection(GridDirection.DOWN);
             } else {
                 bombHit(lastDirection);
             }
-        }
-        else if (lastDirection == GridDirection.UP) {
+         }
+         else if (lastDirection == GridDirection.UP) {
             if (!Position.isNextCellOccupied(GridDirection.UP, pos)) {
                 bombIcon.translate(0, -bombAvatar);
                 pos.moveInDirection(GridDirection.UP);
             } else {
                 bombHit(lastDirection);
             }
+         }
+        } catch (ConcurrentModificationException ex) {
+            System.out.println("ConcurrentModificationException");
         }
+
     }
 
     public void bombHit (GridDirection lastDirection) {
