@@ -17,7 +17,6 @@ import java.util.concurrent.*;
 public class Bomb extends GameObjects {
 
     private Picture bombIcon;
-    private Picture explosionIcon;
     private int bombAvatar = 40;
     private int bombCol;
     private int bombRow;
@@ -105,8 +104,6 @@ public class Bomb extends GameObjects {
             castleList.get(castleNum).hit(15);
             System.out.println("it's a hit!");
             Music.soundBombExplosion();
-            explosionIcon = new Picture(pos.getCol(),pos.getRow(),"explosionIcon.png");
-            explosionIcon.draw();
         }
         bombIcon.delete();
     }
@@ -121,9 +118,7 @@ public class Bomb extends GameObjects {
         for (int i=0; i<2; i++) {
             if (castleList.get(i).isCastle(pos, lastDirection)) {
                 castleNum = i;
-                System.out.println("strange...");
                 return true;
-
             }
         }
         return false;
