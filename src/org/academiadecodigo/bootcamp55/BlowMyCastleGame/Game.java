@@ -24,15 +24,6 @@ public class Game {
 
     }
 
-        public void start() throws InterruptedException {
-            player1 = new Player(1);
-            player2 = new Player(2);
-
-            Engine engine = new Engine(player1, player2);
-            engine.init();
-            engine.start();
-        }
-
     public void createObjects() {
         ObjectsFactory factory = new ObjectsFactory();
         factory.init(GameLevel.LEVEL3);

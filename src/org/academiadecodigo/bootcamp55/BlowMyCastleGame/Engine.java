@@ -21,37 +21,40 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Engine  implements KeyboardHandler {
 
     private Keyboard keyboard;
-    private KEY[] keys;
     private Player player1;
     private Player player2;
     private Map<Integer, Input> inputs;
     private GameState gameState = GameState.MENU;
-    private boolean stopGame;
-    private MenuScreen menuScreen;
+    private static boolean stopGame;
     private Screens activeScreen;
     private Map<GameState, Screens> screens;
-    private InstructionsMenu instructionsMenu;
     private Music music;
     private GameContracts game;
 
 
-    public Engine(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-        inputs = new LinkedHashMap();
-    }
-
+    /**
+     * constructs
+     * sets list of keyboard inputs --- @see Inputs
+     * initiate keyboard
+     */
     public Engine() {
         inputs = new LinkedHashMap();
         keyboard = new Keyboard(this);
         screens = new HashMap<>();
     }
 
+    public static void setGameOver(boolean b) {
+       stopGame = b;
+    }
+
+
     public void init() {
+
         /**
          * Initiates the keyboard and the listener for the keys used in the game
          * see @KEY for details on the overall used keys in the game
          */
+
         this.keyboard = new Keyboard(this);
 
         for (KEY key : KEY.values()) {
@@ -63,11 +66,9 @@ public class Engine  implements KeyboardHandler {
          * Initiates the background grid with the two castles already in place
          */
 
-
-//        factory.createWalls();
-
         /**
-         * create the screens associeted with the several stages of the game
+         * create the MAP with the screens per GameState (see @GameLevel)
+         * sets the activeScreen
          */
         screens.put(GameState.MENU, new MenuScreen(this));
         screens.put(GameState.INSTRUCTIONS, new InstructionsMenu(this));
@@ -98,12 +99,21 @@ public class Engine  implements KeyboardHandler {
         activeScreen.show();
 
         while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
-        || gameState == GameState.TWO_PLAYER || gameState == GameState.PRATICE) {
+                || gameState == GameState.TWO_PLAYER || gameState == GameState.PRATICE) {
+
             showAllMovements();
+
+            if (stopGame) {
+//                activeScreen.hide();
+                gameState = GameState.MENU;
+//                activeScreen.show();
+
+            }
             checkActiveScreen();
             sleep(60L);
-            }
+        }
     }
+
 
     private void checkActiveScreen() {
 
@@ -124,40 +134,6 @@ public class Engine  implements KeyboardHandler {
         return gameState;
     }
 
-    public void play() throws InterruptedException {
-
-        game.init(gameState);
-
-        while (game.isRunning()){
-            showAllMovements();
-            sleep(10L);
-        }
-
-        game.end();
-        // funny sound stuff
-        gameState = GameState.MENU;
-    }
-
-
-    /**
-     * runs the 2 players game
-     */
-    public void start() throws InterruptedException {
-
-        while (!this.stopGame) {
-            Iterator var2 = this.inputs.entrySet().iterator();
-//            System.out.println("in loop" + var2.hasNext());
-
-            while(!var2.hasNext()){
-                //this.sleep(62L);
-                var2 = this.inputs.entrySet().iterator();
-//                System.out.println("teste" + var2.hasNext());
-            }
-            this.showAllMovements();
-            this.sleep(100L);
-        }
-    }
-
     /**
      * delay time to allow some time for player to press or release key before checking keyboard
      * @param time
@@ -168,7 +144,6 @@ public class Engine  implements KeyboardHandler {
         } catch (InterruptedException var4) {
             System.err.println(var4.getMessage());
         }
-
     }
 
     public void keyPressed(KeyboardEvent keyboardEvent) {
