@@ -231,7 +231,7 @@ public class GameScreen extends AbstractScreen implements Screens {
                     case ZERO:
                         placeWalls(player2);
                         break;
-                    case E:
+                    case SPACE:
                         player1.shoot();
                         break;
                 }
