@@ -77,11 +77,11 @@ public class Inventory {
     public void useBomb(int col, int row, GridDirection lastDirection) throws InterruptedException {
         if (bombsNumber > 0){
             bombsNumber -= 1;
-            drawBombText();
             Bomb bomb = new Bomb(col, row); //a criar uma nova, mas é suposto utilizar das que capturarmos
             bomb.launchBomb(lastDirection);
-        }
-        else {
+            bombsNumText.delete();
+            drawBombText();
+        } else {
             System.out.println("There are no more bombs available");
         }
     }
@@ -89,17 +89,24 @@ public class Inventory {
     public void useWall(){
         if (wallsNumber >0){
             wallsNumber--;
+            wallsNumText.delete();
+            wallsTextBackground.delete();
             drawWallsInfo();
         }
-
     }
 
     public void incrementBomb(){
         bombsNumber += 1;
+        bombsNumText.delete();
+        bombsTextBackground.delete();
+        drawBombText();
     }
 
     public void incrementWall(){
         wallsNumber += 1;
+        wallsNumText.delete();
+        wallsTextBackground.delete();
+        drawWallsInfo();
     }
 
     public void hide() {
