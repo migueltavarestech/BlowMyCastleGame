@@ -114,7 +114,7 @@ public class Castle extends GameObjects implements Destroyable {
 
     public boolean isCastle(Position bombPos, GridDirection direction){
         for (Position position : posArr) {
-            if(direction == GridDirection.RIGHT) {
+            if(direction == GridDirection.LEFT) {
                 if (position.getCol() == bombPos.getCol() - 1 &&
                         position.getRow() == bombPos.getRow()) {
                     return true;
