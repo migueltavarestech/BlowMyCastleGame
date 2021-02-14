@@ -28,19 +28,32 @@ public class Bomb extends GameObjects {
         bombCol = (int)(Math.random()*(750-250)+250);
         bombRow = (int)(Math.random()*((700- Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
 
-        bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
+//        bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
         int randomCol = (int)(Math.random()*(19-6)+6);
         int randomRow = (int)(Math.random()*(16-1)+1);
 
-        bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
-        bombIcon.draw();
-        pos = new Position(bombCol, bombRow); // add
+//        bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
+  //      bombIcon.draw();
+ //       pos = new Position(bombCol/40, bombRow/40); // add
+        bombCol = 200;
+        bombRow = 200;
+       bombIcon = new Picture(bombCol, bombRow,"bombIcon.png");
+       bombIcon.draw();
+        pos = new Position(bombCol/40, bombRow/40); // add
+        System.out.println("in bomd" + pos + pos.getCol() + "   " + bombCol);
+        Grid.addOccupiedBombs(pos);
+
+//        System.out.println("new "+);
     }
 
     public Bomb(int col, int row) {
         pos = new Position(col, row);
         bombIcon = new Picture(Grid.columnToX(col),Grid.rowToY(row),"bombIcon.png");
         bombIcon.draw();
+    }
+
+    public void hide(Position pos){
+        bombIcon.delete();
     }
 
     public void launchBomb() {
@@ -58,4 +71,10 @@ public class Bomb extends GameObjects {
             pos.moveInDirection(GridDirection.LEFT);
         }
     }
+
+    public Position getPos() {
+        return this.pos;
+    }
+
+
 }

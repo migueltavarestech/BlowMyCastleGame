@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player {
@@ -17,6 +18,7 @@ public class Player {
     private Inventory inventory;
     private GridDirection lastDirection;
     private int playerNum;
+    private Bomb bomb;
 
     //gun inventory
     private static int playerBombs = 0;
@@ -50,6 +52,12 @@ public class Player {
             }
             playerAvatar.translate(avatarSize, 0);
             pos.moveInDirection(GridDirection.RIGHT);
+            System.out.println("player pos  " + pos + pos.getCol() + Position.isCellBomb(pos));
+            if (Position.isCellBomb(pos)){
+                inventory.incrementBomb();
+                inventory.drawBombText();
+//                bomb.hide(bomb.getPos());
+            }
         }
     }
 
