@@ -19,7 +19,7 @@ public class Castle extends GameObjects implements Destroyable {
     private int castleHealth = 100;
     private boolean destroyed;
     private Picture castleIcon;
-    private Picture gameOver = new Picture(Grid.columnToX(9), Grid.rowToY(5), "gameOver.png");
+    private Picture gameOver = new Picture(Grid.columnToX(8), Grid.rowToY(0), "gameOver2.png");
     private static int count = 0;
     private HealthBar healthBar;
     private int castleNumber;
