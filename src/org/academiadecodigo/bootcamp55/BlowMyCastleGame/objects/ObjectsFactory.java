@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects;
 
+
+
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
@@ -31,16 +33,16 @@ public class ObjectsFactory {
     }
 
     public void createBombs() {
-        // Wait 10 seconds before creating first bombs
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (InterruptedException ex) {
-            System.out.println("Interrupted Exception happened.");
-            Thread.currentThread().interrupt();
-        }
+//        // Wait 10 seconds before creating first bombs
+//        try {
+//            TimeUnit.SECONDS.sleep(10);
+//        } catch (InterruptedException ex) {
+//            System.out.println("Interrupted Exception happened.");
+//            Thread.currentThread().interrupt();
+//        }
 
         // Create bombs according with chosen GameLevel
-        bomb = new Bomb[bombs];
+        bomb = new Bomb[1];
         for (int i=0; i < bomb.length; i++) {
             bomb[i] = new Bomb();
         }

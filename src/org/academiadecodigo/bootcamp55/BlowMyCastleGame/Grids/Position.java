@@ -1,10 +1,18 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid.*;
+
 public class Position {
 
     private int col;
     private int row;
     private boolean cellOccupied;
+    private boolean cellBomb;
 
     public Position(int col, int row) {
         this.col = col;
@@ -59,6 +67,24 @@ public class Position {
 
     public void setCellOccupied(boolean value) { this.cellOccupied = value; }
 
+    public void setCellBomb(boolean value){
+        this.cellBomb = value;
+    }
+
+    public static boolean isCellBomb(Position pos){
+
+        boolean isCellBomb = false;
+        List<Position> bombs = new LinkedList<>();
+        bombs = getOccupiedBombs();
+
+        for (Position item : bombs){
+            if (item.getCol() == pos.getCol() && item.getRow() == pos.getRow()){
+                isCellBomb = true;
+            }
+        }
+        return isCellBomb;
+    }
+
     public boolean isOccupied() { return cellOccupied; }
 
     public String toString() {
@@ -69,7 +95,7 @@ public class Position {
     }
 
     public static boolean isNextCellOccupied(GridDirection direction, Position pos) {
-        Position[] occupiedCells = Grid.getOccupiedCells();
+        Position[] occupiedCells = getOccupiedCells();
 
         boolean isNextCellOccupied = false;
         int currentCol = pos.getCol();

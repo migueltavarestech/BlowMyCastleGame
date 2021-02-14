@@ -77,6 +77,11 @@ public class Engine  implements KeyboardHandler {
 
         activeScreen = screens.get(gameState);
 
+        /**
+         * create field bombs after some seconds
+         */
+        factory.createBombs();
+
         stopGame = false;
     }
 
