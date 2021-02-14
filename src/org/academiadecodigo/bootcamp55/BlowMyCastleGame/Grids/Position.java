@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -74,12 +75,14 @@ public class Position {
     public static boolean isCellBomb(Position pos){
 
         boolean isCellBomb = false;
-        List<Position> bombs = new LinkedList<>();
+        List<Bomb> bombs = new LinkedList<>();
         bombs = getOccupiedBombs();
 
-        for (Position item : bombs){
-            if (item.getCol() == pos.getCol() && item.getRow() == pos.getRow()){
+        for (Bomb bomb : bombs){
+            if (bomb.getPos().getCol() == pos.getCol() && bomb.getPos().getRow() == pos.getRow()){
                 isCellBomb = true;
+                bomb.hide();
+                Music.soundPickUpBomb();
             }
         }
         return isCellBomb;
