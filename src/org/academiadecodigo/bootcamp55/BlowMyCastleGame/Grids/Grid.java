@@ -28,7 +28,7 @@ public class Grid {
 
 
     public void init() {
-      canvas = new Picture(PADDING, PADDING, "background2.png");
+      canvas = new Picture(PADDING, PADDING, "menuBackground.png");
       canvas.draw();
       setCanvasLimits();
     }

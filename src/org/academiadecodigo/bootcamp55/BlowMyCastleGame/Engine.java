@@ -62,8 +62,7 @@ public class Engine  implements KeyboardHandler {
         /**
          * Initiates the background grid with the two castles already in place
          */
-        Grid grid = new Grid();
-        grid.init();
+
 
 //        factory.createWalls();
 
