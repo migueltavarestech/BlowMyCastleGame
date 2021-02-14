@@ -3,23 +3,18 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Engine;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridObjects;
-
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-
 
 import java.util.*;
 
-public class GameScreen extends AbstractScreen implements Screens {
+public class GameScreen2 extends AbstractScreen implements Screens {
 
     private Player player1;
     private Player player2;
@@ -32,25 +27,12 @@ public class GameScreen extends AbstractScreen implements Screens {
 
     private int nrPlayers = 2;
 
-    public GameScreen(Engine engine) {
+    public GameScreen2(Engine engine) {
         super(engine);
         gameElements = new HashMap<>();
         listofKeys = new ArrayList<>();
         inventories = new LinkedList<>();
         players = new LinkedList<>();
-
-        /** checks number GameMode - Practice or Play
-         *
-         */
-        switch (engine.getGameState()){
-
-            case TWO_PLAYER:
-                nrPlayers = 1;
-                break;
-            case PRATICE:
-                nrPlayers = 2;
-                break;
-        }
     }
 
     @Override
@@ -58,36 +40,25 @@ public class GameScreen extends AbstractScreen implements Screens {
 
         /**
          * create inventory dependent on GameLevel and display
-         * set of players and assign initial inventory to each player
          */
-        System.out.println(engine.getGameState());
-
-        switch (engine.getGameState()){
-
-            case TWO_PLAYER:
-                System.out.println("Two");
-                inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
-                inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 2));
-                player1 = new Player(1);
-                player2 = new Player(2);
-                players.add(player1);
-                players.add(player2);
-                players.get(0).setInventory(inventories.get(0));
-                players.get(1).setInventory(inventories.get(1));
-                break;
-
-            case PRATICE:
-                System.out.println("pratice");
-                inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
-                player1 = new Player(1);
-                players.add(player1);
-                players.get(0).setInventory(inventories.get(0));
-                break;
-        }
+//        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
+//        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
+        inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
+        inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 2));
 
         for (Inventory entry : inventories){
             entry.initialDraw();
         }
+
+        /**
+         * creates set of players and sets initial Inventory
+         */
+        player1 = new Player(1);
+        player2 = new Player(2);
+        players.add(player1);
+        players.add(player2);
+        players.get(0).setInventory(inventories.get(0));
+        players.get(1).setInventory(inventories.get(1));
 
     }
 
@@ -167,7 +138,7 @@ public class GameScreen extends AbstractScreen implements Screens {
     }
 
     private void placeWall(Position pos, int nrPlayer){
-        Wall newWall = new Wall(pos, WallType.WOOD);
+        Wall newWall =new Wall(pos, WallType.WOOD);
         gameElements.put(newWall,players.get(nrPlayer));
         inventories.get(nrPlayer).useWall();
         setOcuppiedPos(pos);
@@ -189,30 +160,20 @@ public class GameScreen extends AbstractScreen implements Screens {
                         engine.setGameState(GameState.MENU);
                         break;
                     case DOWN:
-                        if (nrPlayers == 2) {
-                            player2.moveDown();
-                        }
+                        player2.moveDown();
                         break;
                     case UP:
-                        if (nrPlayers == 2) {
-                            player2.moveUp();
-                        }
+                        player2.moveUp();
                         break;
                     case LEFT:
-                        if (nrPlayers == 2) {
-                            player2.moveLeft();
-                        }
+                        player2.moveLeft();
                         break;
                     case RIGHT:
-                        if (nrPlayers == 2) {
-                            player2.moveRight();
-                        }
+                        player2.moveRight();
                         break;
                     case ENTER:
-                        if (nrPlayers == 2) {
-                            player2.shoot();
-                        }
-
+                        player2.shoot();
+                        break;
                     case A:
                         player1.moveLeft();
                         break;
@@ -231,7 +192,7 @@ public class GameScreen extends AbstractScreen implements Screens {
                     case ZERO:
                         placeWalls(player2);
                         break;
-                    case E:
+                    case SPACE:
                         player1.shoot();
                         break;
                 }

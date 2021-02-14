@@ -75,6 +75,7 @@ public class Engine  implements KeyboardHandler {
         screens.put(GameState.MENU, new MenuScreen(this));
         screens.put(GameState.INSTRUCTIONS, new InstructionsMenu(this));
         screens.put(GameState.TWO_PLAYER, new GameScreen(this));
+        screens.put(GameState.PRATICE, new GameScreen(this));
 
         activeScreen = screens.get(gameState);
 
@@ -100,7 +101,7 @@ public class Engine  implements KeyboardHandler {
         activeScreen.show();
 
         while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
-        || gameState == GameState.TWO_PLAYER){
+        || gameState == GameState.TWO_PLAYER || gameState == GameState.PRATICE) {
             showAllMovements();
             checkActiveScreen();
             sleep(60L);
@@ -120,6 +121,10 @@ public class Engine  implements KeyboardHandler {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 
     public void play() throws InterruptedException {
@@ -209,4 +214,7 @@ public class Engine  implements KeyboardHandler {
         }
     }
 
+    public Screens getActiveScreen() {
+        return activeScreen;
+    }
 }
