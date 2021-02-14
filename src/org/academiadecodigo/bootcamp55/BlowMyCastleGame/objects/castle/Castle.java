@@ -6,10 +6,12 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons.Bomb;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.*;
 
 public class Castle extends GameObjects implements Destroyable {
 
@@ -23,11 +25,12 @@ public class Castle extends GameObjects implements Destroyable {
     private Position pos;
     private Position[] posArr = new Position[0];
     private static LinkedList<Castle> castleList = new LinkedList();
+    private final ScheduledExecutorService scheduler3 = Executors.newScheduledThreadPool(1);
 
-    public Castle() {
-        count++;
+    public Castle(int castleNumber) {
+        this.castleNumber = castleNumber;
         drawCastles();
-        healthBar = new HealthBar();
+        healthBar = new HealthBar(castleNumber);
         castleList.add(this);
     }
 
@@ -40,6 +43,7 @@ public class Castle extends GameObjects implements Destroyable {
                 castleIcon.load("castle0.png");
                 destroyed = true;
                 gameOver.draw();
+                // endGame();
                 // set Engine game over
             } else if (castleHealth <= 25) {
                 castleIcon.load("castle25.png");
@@ -48,6 +52,19 @@ public class Castle extends GameObjects implements Destroyable {
             } else if (castleHealth <= 75) {
                 castleIcon.load("castle75.png");
             }
+        }
+    }
+
+    public void endGame() {
+        try {
+            final Runnable beeper3 = new Runnable() {
+                public void run() {
+                    System.exit(0);
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler3.scheduleAtFixedRate(beeper3, 2, 1, TimeUnit.SECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("RejectedExecutionException");
         }
     }
 
@@ -63,12 +80,11 @@ public class Castle extends GameObjects implements Destroyable {
     public int getCastleNumber() { return castleNumber; }
 
     public void drawCastles() {
-        if (count == 1) {
+        if (castleNumber == 1) {
             // First Castle (Left)
             pos = new Position(1,6);
             castleIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"castle.png");
             castleIcon.draw();
-            castleNumber = 1;
 
             for (int x=1; x<4; x++) {
                 for (int y=6; y<9; y++) {
@@ -78,12 +94,11 @@ public class Castle extends GameObjects implements Destroyable {
                     addCastlePos(pos);
                 }
             }
-        } else {
+        } else if (castleNumber == 2) {
             // Second Castle (Right)
             pos = new Position(21,6);
             castleIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"castle.png");
             castleIcon.draw();
-            castleNumber = 2;
 
             for (int x=21; x<24; x++) {
                 for (int y=6; y<9; y++) {

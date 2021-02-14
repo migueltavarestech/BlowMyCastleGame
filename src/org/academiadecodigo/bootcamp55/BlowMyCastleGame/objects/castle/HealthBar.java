@@ -10,12 +10,13 @@ public class HealthBar {
     private static final int healthBarLength = 200;
     private static int count = 0;
     private int damageTaken = 0;
+    private int healthBarNumber;
 
-    public HealthBar() {
-        count++;
-        if (count == 1) {
+    public HealthBar(int healthBarNumber) {
+        this.healthBarNumber = healthBarNumber;
+        if (healthBarNumber == 1) {
             drawC1HealthBar();
-        } else {
+        } else if (healthBarNumber == 2) {
             drawC2HealthBar();
         }
     }

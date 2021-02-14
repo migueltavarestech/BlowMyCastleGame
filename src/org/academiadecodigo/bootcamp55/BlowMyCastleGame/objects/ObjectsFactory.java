@@ -26,8 +26,8 @@ public class ObjectsFactory {
     }
 
     public void createCastles() {
-        Castle castle1 = new Castle();
-        Castle castle2 = new Castle();
+        Castle castle1 = new Castle(1);
+        Castle castle2 = new Castle(2);
 
         // Temporary hit/damage, proof that health bar works;
 //        castle1.hit(60);
@@ -45,7 +45,7 @@ public class ObjectsFactory {
                     scheduler3.shutdownNow();
                 }
             };
-            final ScheduledFuture<?> beeperHandle = scheduler3.scheduleAtFixedRate(beeper3, 20, 1, TimeUnit.SECONDS);
+            final ScheduledFuture<?> beeperHandle = scheduler3.scheduleAtFixedRate(beeper3, 15, 1, TimeUnit.SECONDS);
         } catch (RejectedExecutionException ex) {
             System.out.println("test");
         }
