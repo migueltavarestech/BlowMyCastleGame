@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Engine;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridObjects;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
@@ -94,36 +95,60 @@ public class GameScreen extends AbstractScreen implements Screens {
 
     private void placeWalls(Player player) {
 
+        int index = 0;
+        Position postemp = new Position(player.getPos().getCol(), player.getPos().getRow());
+
         if (player.equals(players.get(0))){
-
-            if (inventories.get(0).getWallsNumber() != 0) {
-
-                Wall newWall =new Wall(player.getPos(), WallType.WOOD);
-                gameElements.put(newWall, player);
-                inventories.get(0).useWall();
-
-                Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
-                setOcuppiedPos(temp);
-
-                return;
-            }
+            index = 0;
+       }
+        if (player.equals(players.get(1))) {
+            index = 1;
         }
-        if (player.equals(players.get(1))){
 
-            if (inventories.get(1).getWallsNumber() != 0)
-            {
-                Wall newWall =new Wall(player.getPos(), WallType.WOOD);
-                gameElements.put(newWall, player);
-                inventories.get(1).useWall();
+        if (inventories.get(index).getWallsNumber() != 0) {
 
-                Position temp = new Position(player.getPos().getCol(), player.getPos().getRow());
+            if (player.getLastDirection() == null){
+                    return;
+                }
 
-                setOcuppiedPos(temp);
+            switch (player.getLastDirection()){
 
-                return;
+                case UP:
+                    if (!Position.isNextCellOccupied(GridDirection.UP, player.getPos())) {
+                        postemp.moveInDirection(GridDirection.UP);
+                        placeWall(postemp, index);
+                        break;
+                    }
+                case DOWN:
+                     if (!Position.isNextCellOccupied(GridDirection.DOWN, player.getPos())) {
+                         postemp.moveInDirection(GridDirection.DOWN);
+                         placeWall(postemp, index);
+                         break;
+                        }
+                     break;
+                case LEFT:
+                     if (!Position.isNextCellOccupied(GridDirection.LEFT, player.getPos())) {
+                         postemp.moveInDirection(GridDirection.LEFT);
+                         placeWall(postemp, index);
+                         break;
+                        }
+                     break;
+                case RIGHT:
+                    if (!Position.isNextCellOccupied(GridDirection.RIGHT, player.getPos())) {
+                        postemp.moveInDirection(GridDirection.RIGHT);
+                        placeWall(postemp, index);
+                        break;
+                        }
+                }
+               return;
             }
+    }
 
-        }
+    private void placeWall(Position pos, int nrPlayer){
+        Wall newWall =new Wall(pos, WallType.WOOD);
+        gameElements.put(newWall,players.get(nrPlayer));
+        inventories.get(nrPlayer).useWall();
+        setOcuppiedPos(pos);
     }
 
     private void setOcuppiedPos(Position pos) {

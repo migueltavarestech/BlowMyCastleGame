@@ -2,6 +2,9 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Grid {
 
     //Player should only be created after the field;
@@ -15,11 +18,13 @@ public class Grid {
     private static final int totalCols = 25;
     private static final int totalRows = 18;
     private static Position[] occupiedCells = new Position[0];
+    private static List<Position> occupiedBombs = new LinkedList<>();
 
     public Grid() {
         this.width = totalCols * cellSize;
         this.height = totalRows * cellSize;
     }
+
 
     public void init() {
       canvas = new Picture(PADDING, PADDING, "background2.png");
@@ -75,6 +80,16 @@ public class Grid {
     public static Position[] getOccupiedCells() {
         return occupiedCells;
     }
+
+    public static void addOccupiedBombs(Position element){
+        occupiedBombs.add(element);
+    }
+
+    public static List<Position> getOccupiedBombs() {
+        return occupiedBombs;
+    }
+
+
 
     public void setCanvasLimits() {
         // UP Limit
