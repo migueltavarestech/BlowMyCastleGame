@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
 
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Engine;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
@@ -43,6 +44,7 @@ public class Castle extends GameObjects implements Destroyable {
                 castleIcon.load("castle0.png");
                 destroyed = true;
                 gameOver.draw();
+                Engine.setGameOver(true);
                 // endGame();
                 // set Engine game over
             } else if (castleHealth <= 25) {

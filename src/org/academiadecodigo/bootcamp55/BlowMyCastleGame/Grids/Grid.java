@@ -136,4 +136,10 @@ public class Grid {
             addOccupiedCell(pos);
         }
     }
+
+    public static void clearBombList() {
+        Position[] tempArr = new Position[0];
+        occupiedBombs.clear();
+        occupiedCells = tempArr;
+    }
 }

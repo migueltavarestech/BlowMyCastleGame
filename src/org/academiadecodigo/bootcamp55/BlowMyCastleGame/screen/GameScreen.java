@@ -121,6 +121,8 @@ public class GameScreen extends AbstractScreen implements Screens {
         }
 
         gameElements.clear();
+        Position.clearPosArr();
+        Grid.clearBombList();
     }
 
     private void placeWalls(Player player) {

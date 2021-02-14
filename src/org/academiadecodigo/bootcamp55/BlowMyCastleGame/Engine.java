@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameContracts;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.GameState;
@@ -26,7 +27,7 @@ public class Engine  implements KeyboardHandler {
     private Player player2;
     private Map<Integer, Input> inputs;
     private GameState gameState = GameState.MENU;
-    private boolean stopGame;
+    private static boolean stopGame;
     private MenuScreen menuScreen;
     private Screens activeScreen;
     private Map<GameState, Screens> screens;
@@ -99,10 +100,19 @@ public class Engine  implements KeyboardHandler {
 
         while (gameState == GameState.MENU || gameState == GameState.INSTRUCTIONS
         || gameState == GameState.TWO_PLAYER || gameState == GameState.PRATICE) {
-            showAllMovements();
-            checkActiveScreen();
-            sleep(60L);
+            if(stopGame){
+                System.out.println(stopGame);
+                setGameState(GameState.MENU);
+                activeScreen.hide();
+                activeScreen = screens.get(gameState);
+                activeScreen.show();
+                stopGame = false;
+            } else {
+                showAllMovements();
+                checkActiveScreen();
+                sleep(80L);
             }
+        }
     }
 
     private void checkActiveScreen() {
@@ -209,6 +219,10 @@ public class Engine  implements KeyboardHandler {
 
             }
         }
+    }
+
+    public static void setGameOver(boolean value) {
+        stopGame = value;
     }
 
     public Screens getActiveScreen() {
