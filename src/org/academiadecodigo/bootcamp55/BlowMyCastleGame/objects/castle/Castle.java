@@ -133,7 +133,6 @@ public class Castle extends GameObjects implements Destroyable {
                     return true;
                 }
             }
-            // Implementar LEFT (Col + 1) / UP (Row -1) / DOWN (Row + 1)
         }
         return false;
     }

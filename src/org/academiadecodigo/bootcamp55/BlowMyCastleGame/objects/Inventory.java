@@ -77,6 +77,7 @@ public class Inventory {
     public void useBomb(int col, int row, GridDirection lastDirection) throws InterruptedException {
         if (bombsNumber > 0){
             bombsNumber -= 1;
+            drawBombText();
             Bomb bomb = new Bomb(col, row); //a criar uma nova, mas é suposto utilizar das que capturarmos
             bomb.launchBomb(lastDirection);
         }
