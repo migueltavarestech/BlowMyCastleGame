@@ -18,6 +18,7 @@ public class ObjectsFactory {
     private Bomb[] bomb;
     private Wall[] wall;
     private final ScheduledExecutorService scheduler3 = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduler4 = Executors.newScheduledThreadPool(1);
 
     public void init(GameLevel gameLevel)  {
         this.bombs = gameLevel.getBomb();
@@ -45,6 +46,19 @@ public class ObjectsFactory {
                 }
             };
             final ScheduledFuture<?> beeperHandle = scheduler3.scheduleAtFixedRate(beeper3, 20, 1, TimeUnit.SECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("test");
+        }
+
+        try {
+            final Runnable beeper4 = new Runnable() {
+                public void run() {
+                    for (int i=0; i<3; i++) {
+                        Bomb bomb = new Bomb();
+                    }
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler4.scheduleAtFixedRate(beeper4, 40, 40, TimeUnit.SECONDS);
         } catch (RejectedExecutionException ex) {
             System.out.println("test");
         }
