@@ -33,16 +33,16 @@ public class ObjectsFactory {
     }
 
     public void createBombs() {
-//        // Wait 10 seconds before creating first bombs
+        // Wait 10 seconds before creating first bombs
 //        try {
-//            TimeUnit.SECONDS.sleep(10);
+//            TimeUnit.SECONDS.sleep(5);
 //        } catch (InterruptedException ex) {
 //            System.out.println("Interrupted Exception happened.");
 //            Thread.currentThread().interrupt();
 //        }
 
         // Create bombs according with chosen GameLevel
-        bomb = new Bomb[1];
+        bomb = new Bomb[bombs];
         for (int i=0; i < bomb.length; i++) {
             bomb[i] = new Bomb();
         }
