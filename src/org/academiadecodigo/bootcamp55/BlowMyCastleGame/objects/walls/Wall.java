@@ -77,7 +77,6 @@ public class Wall extends GameObjects implements Destroyable {
                 hideWall();
                 Position temp = new Position(pos.getCol(), pos.getRow());
                 temp.setCellOccupied(false);
-                wallIcon.delete();
                 Grid.removeOccupiedCell(pos);
             } else if (wallHealth <= 15) {
                 wallIcon.load("/Pictures/woodWall35.png");
@@ -109,29 +108,27 @@ public class Wall extends GameObjects implements Destroyable {
     }
 
     public boolean isWall(Position bombPos, GridDirection direction){
-        for (Position position : posArr) {
             if(direction == GridDirection.LEFT) {
-                if (position.getCol() == bombPos.getCol() - 1 &&
-                        position.getRow() == bombPos.getRow()) {
+                if (pos.getCol() == bombPos.getCol() - 1 &&
+                        pos.getRow() == bombPos.getRow()) {
                     return true;
                 }
             } else if (direction == GridDirection.RIGHT) {
-                if (position.getCol() == bombPos.getCol() + 1 &&
-                        position.getRow() == bombPos.getRow()) {
+                if (pos.getCol() == bombPos.getCol() + 1 &&
+                        pos.getRow() == bombPos.getRow()) {
                     return true;
                 }
             } else if (direction == GridDirection.UP) {
-                if (position.getCol() == bombPos.getCol() &&
-                        position.getRow() == bombPos.getRow() - 1) {
+                if (pos.getCol() == bombPos.getCol() &&
+                        pos.getRow() == bombPos.getRow() - 1) {
                     return true;
                 }
             } else if (direction == GridDirection.DOWN) {
-                if (position.getCol() == bombPos.getCol() &&
-                        position.getRow() == bombPos.getRow() + 1) {
+                if (pos.getCol() == bombPos.getCol() &&
+                        pos.getRow() == bombPos.getRow() + 1) {
                     return true;
                 }
             }
-        }
         return false;
     }
 
