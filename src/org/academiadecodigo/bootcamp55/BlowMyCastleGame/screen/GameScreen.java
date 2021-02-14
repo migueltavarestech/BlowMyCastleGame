@@ -50,8 +50,10 @@ public class GameScreen extends AbstractScreen implements Screens {
         /**
          * create inventory dependent on GameLeval and display
          */
-        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
-        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
+//        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 1));
+//        inventories.add(new Inventory(GameLevel.LEVEL3.getBomb(),GameLevel.LEVEL3.getWall(), 2));
+        inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
+        inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 2));
 
         for (Inventory entry : inventories){
             entry.initialDraw();

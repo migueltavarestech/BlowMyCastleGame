@@ -36,19 +36,12 @@ public class Bomb extends GameObjects {
 
         int randomCol = (int)(Math.random()*(17-8)+8);
         int randomRow = (int)(Math.random()*(16-1)+1);
+        pos = new Position(randomCol, randomRow);
 
         bombIcon = new Picture(Grid.columnToX(randomCol),Grid.rowToY(randomRow),"bombIcon.png");
+        Grid.addOccupiedBombs(pos);
         bombIcon.draw();
- //       pos = new Position(bombCol/40, bombRow/40); // add
-//        bombCol = 200;
-//        bombRow = 200;
-//        bombIcon = new Picture(bombCol, bombRow,"bombIcon.png");
-//        bombIcon.draw();
-//        pos = new Position(bombCol/40, bombRow/40); // add
-//        System.out.println("in bomd" + pos + pos.getCol() + "   " + bombCol);
-//        Grid.addOccupiedBombs(pos);
-
-//        System.out.println("new "+);
+        // System.out.println("pos bomb//col: " + pos.getCol() + "//row: " + pos.getRow());
     }
 
     public Bomb(int col, int row) {

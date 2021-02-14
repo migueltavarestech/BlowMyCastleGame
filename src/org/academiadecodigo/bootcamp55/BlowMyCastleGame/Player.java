@@ -52,12 +52,7 @@ public class Player {
             }
             playerAvatar.translate(avatarSize, 0);
             pos.moveInDirection(GridDirection.RIGHT);
-            System.out.println("player pos  " + pos + pos.getCol() + Position.isCellBomb(pos));
-            if (Position.isCellBomb(pos)){
-                inventory.incrementBomb();
-                inventory.drawBombText();
-//                bomb.hide(bomb.getPos());
-            }
+            checkBomb(pos);
         }
     }
 
@@ -71,6 +66,7 @@ public class Player {
             }
             playerAvatar.translate(-avatarSize, 0);
             pos.moveInDirection(GridDirection.LEFT);
+            checkBomb(pos);
         }
     }
 
@@ -84,6 +80,7 @@ public class Player {
             }
             playerAvatar.translate(0, -avatarSize);
             pos.moveInDirection(GridDirection.UP);
+            checkBomb(pos);
         }
     }
 
@@ -97,6 +94,7 @@ public class Player {
             }
             playerAvatar.translate(0,avatarSize);
             pos.moveInDirection(GridDirection.DOWN);
+            checkBomb(pos);
         }
     }
 
@@ -127,4 +125,13 @@ public class Player {
     }
 
     public GridDirection getLastDirection() {return lastDirection;}
+
+    private void checkBomb(Position pos) {
+        // System.out.println("player pos  " + pos + pos.getCol() + Position.isCellBomb(pos));
+        if (Position.isCellBomb(pos)){
+            inventory.incrementBomb();
+            inventory.drawBombText();
+//                bomb.hide(bomb.getPos());
+        }
+    }
 }
