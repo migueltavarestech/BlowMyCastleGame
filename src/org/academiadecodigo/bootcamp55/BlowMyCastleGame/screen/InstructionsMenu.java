@@ -32,7 +32,7 @@ public class InstructionsMenu extends AbstractScreen implements Screens {
 
     @Override
     public void show() {
-        menu = new Picture(400, 200, "resources/Pictures/instructions.png");
+        menu = new Picture(400, 100, "resources/Pictures/instructions.png");
         menu.draw();
     }
 
