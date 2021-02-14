@@ -73,19 +73,18 @@ public class Position {
     }
 
     public static boolean isCellBomb(Position pos){
-
-        boolean isCellBomb = false;
         List<Bomb> bombs = new LinkedList<>();
         bombs = getOccupiedBombs();
 
         for (Bomb bomb : bombs){
             if (bomb.getPos().getCol() == pos.getCol() && bomb.getPos().getRow() == pos.getRow()){
-                isCellBomb = true;
                 bomb.hide();
+                bombs.remove(bomb);
                 Music.soundPickUpBomb();
+                return true;
             }
         }
-        return isCellBomb;
+        return false;
     }
 
     public boolean isOccupied() { return cellOccupied; }
