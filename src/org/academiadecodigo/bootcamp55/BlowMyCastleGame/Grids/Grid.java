@@ -78,6 +78,18 @@ public class Grid {
         occupiedCells = tempArr;
     }
 
+    public static void removeOccupiedCell(Position element) {
+        Position[] tempArr = new Position[occupiedCells.length-1];
+        int j=0;
+        for(int i=0; i<occupiedCells.length; i++){
+            if(occupiedCells[i] != element) {
+                tempArr[j] = occupiedCells[i];
+                j++;
+            }
+        }
+        occupiedCells = tempArr;
+    }
+
     public static Position[] getOccupiedCells() {
         return occupiedCells;
     }

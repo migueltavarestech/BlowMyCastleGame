@@ -2,8 +2,8 @@ package org.academiadecodigo.bootcamp55.BlowMyCastleGame.games;
 
 public enum GameLevel {
     LEVEL1(10,5),
-    LEVEL2(15, 5),
-    LEVEL3(20, 5);
+    LEVEL2(15, 10),
+    LEVEL3(20, 10);
 
     private final int bomb;
     private final int wall;

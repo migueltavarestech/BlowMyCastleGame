@@ -103,7 +103,6 @@ public class Inventory {
     }
 
     public void hide() {
-
         wallsIcon.delete();
         wallsNumText.delete();
         wallsTextBackground.delete();
@@ -111,9 +110,6 @@ public class Inventory {
         bombIcon.delete();
         bombsNumText.delete();
         bombsTextBackground.delete();
-
-
-
     }
 
 
