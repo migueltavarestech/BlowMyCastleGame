@@ -12,6 +12,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.games.GameLevel;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.ObjectsFactory;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -65,7 +66,7 @@ public class GameScreen extends AbstractScreen implements Screens {
         switch (engine.getGameState()){
 
             case TWO_PLAYER:
-                System.out.println("Two");
+                System.out.println("Two Player Mode");
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 2));
                 player1 = new Player(1);
@@ -77,7 +78,7 @@ public class GameScreen extends AbstractScreen implements Screens {
                 break;
 
             case PRATICE:
-                System.out.println("pratice");
+                System.out.println("practice");
                 inventories.add(new Inventory(0,GameLevel.LEVEL3.getWall(), 1));
                 player1 = new Player(1);
                 players.add(player1);
@@ -88,6 +89,11 @@ public class GameScreen extends AbstractScreen implements Screens {
         for (Inventory entry : inventories){
             entry.initialDraw();
         }
+
+        ObjectsFactory factory = new ObjectsFactory();
+        factory.init(GameLevel.LEVEL3);
+        factory.createCastles();
+        factory.createBombs();
 
     }
 

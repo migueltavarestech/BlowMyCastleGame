@@ -64,9 +64,7 @@ public class Engine  implements KeyboardHandler {
          */
         Grid grid = new Grid();
         grid.init();
-        ObjectsFactory factory = new ObjectsFactory();
-        factory.init(GameLevel.LEVEL3);
-        factory.createCastles();
+
 //        factory.createWalls();
 
         /**
@@ -88,7 +86,7 @@ public class Engine  implements KeyboardHandler {
 //            System.out.println("Interrupted Exception happened.");
 //            Thread.currentThread().interrupt();
 //        }
-        factory.createBombs();
+
 
         stopGame = false;
     }
