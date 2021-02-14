@@ -9,6 +9,8 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.ConcurrentModificationException;
+
 
 public class Inventory {
 
@@ -58,22 +60,30 @@ public class Inventory {
     }
 
     public void drawBombText(){
-        bombsNumText = new Text(bombIcon.getX()+15, bombIcon.getY()-10, "" + bombsNumber);
-        bombsNumText.grow(2,2);
+        try {
+            bombsNumText = new Text(bombIcon.getX() + 15, bombIcon.getY() - 10, "" + bombsNumber);
+            bombsNumText.grow(2, 2);
 
-        bombsTextBackground = new Rectangle(bombsNumText.getX()-2.5, bombsNumText.getY()-2.5, bombsNumText.getWidth(), bombsNumText.getHeight());
-        bombsTextBackground.setColor(Color.WHITE);
-        bombsTextBackground.fill();
-        bombsNumText.draw();
+            bombsTextBackground = new Rectangle(bombsNumText.getX() - 2.5, bombsNumText.getY() - 2.5, bombsNumText.getWidth(), bombsNumText.getHeight());
+            bombsTextBackground.setColor(Color.WHITE);
+            bombsTextBackground.fill();
+            bombsNumText.draw();
+        } catch (ConcurrentModificationException ex) {
+            System.out.println("ConcurrentModificationException");
+        }
     }
 
     private void drawWallsInfo(){
-        wallsNumText = new Text(wallsIcon.getX()+14, wallsIcon.getY()-10, "" + wallsNumber);
-        wallsNumText.grow(2,2);
-        wallsTextBackground = new Rectangle(wallsNumText.getX()-2.5, wallsNumText.getY()-2.5, wallsNumText.getWidth(), wallsNumText.getHeight());
-        wallsTextBackground.setColor(Color.WHITE);
-        wallsTextBackground.fill();
-        wallsNumText.draw();
+        try {
+            wallsNumText = new Text(wallsIcon.getX() + 14, wallsIcon.getY() - 10, "" + wallsNumber);
+            wallsNumText.grow(2, 2);
+            wallsTextBackground = new Rectangle(wallsNumText.getX() - 2.5, wallsNumText.getY() - 2.5, wallsNumText.getWidth(), wallsNumText.getHeight());
+            wallsTextBackground.setColor(Color.WHITE);
+            wallsTextBackground.fill();
+            wallsNumText.draw();
+        } catch (ConcurrentModificationException ex) {
+        System.out.println("ConcurrentModificationException");
+        }
     }
 
     public void useBomb(int col, int row, GridDirection lastDirection) throws InterruptedException {
