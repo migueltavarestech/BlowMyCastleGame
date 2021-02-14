@@ -26,8 +26,6 @@ public class Grid {
         this.height = totalRows * cellSize;
     }
 
-    int randomInt = 0;
-
     public void init() {
       canvas = new Picture(PADDING, PADDING, "menuBackground.png");
       canvas.draw();
