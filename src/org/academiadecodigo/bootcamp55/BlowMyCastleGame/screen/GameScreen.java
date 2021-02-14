@@ -13,6 +13,7 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.Input;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.keyboard.KEY;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Inventory;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.ObjectsFactory;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.WallType;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -123,6 +124,7 @@ public class GameScreen extends AbstractScreen implements Screens {
         gameElements.clear();
         Position.clearPosArr();
         Grid.clearBombList();
+        Castle.clearCastleList();
     }
 
     private void placeWalls(Player player) {
@@ -222,7 +224,7 @@ public class GameScreen extends AbstractScreen implements Screens {
                         if (nrPlayers == 2) {
                             player2.shoot();
                         }
-
+                        break;
                     case A:
                         player1.moveLeft();
                         break;
