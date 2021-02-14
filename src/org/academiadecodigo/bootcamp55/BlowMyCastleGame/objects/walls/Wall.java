@@ -78,6 +78,7 @@ public class Wall extends GameObjects implements Destroyable {
                 Position temp = new Position(pos.getCol(), pos.getRow());
                 temp.setCellOccupied(false);
                 wallIcon.delete();
+                Grid.removeOccupiedCell(pos);
             } else if (wallHealth <= 15) {
                 wallIcon.load("/Pictures/woodWall35.png");
             } else if (wallHealth <= 35) {
