@@ -22,6 +22,7 @@ public class Bomb extends GameObjects {
     private Position pos;
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduler2 = Executors.newScheduledThreadPool(1);
     private boolean hitHappened;
     private LinkedList<Castle> castleList;
     private int castleNum;
@@ -110,6 +111,7 @@ public class Bomb extends GameObjects {
             Music.soundBombExplosion();
             explosionIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"explosionIcon.png");
             explosionIcon.draw();
+            deleteExplosion();
         }
         bombIcon.delete();
     }
@@ -138,12 +140,18 @@ public class Bomb extends GameObjects {
         return this.pos;
     }
 
-    private void sleep(int time) {
+    private void deleteExplosion() {
         try {
-            Thread.sleep(time);
-        } catch (InterruptedException ex) {
-            System.out.println("Thread interrupted exception in Bomb.");
+            final Runnable beeper2 = new Runnable() {
+                public void run() {
+                    explosionIcon.delete();
+                }
+            };
+            final ScheduledFuture<?> beeperHandle = scheduler2.scheduleAtFixedRate(beeper2, 150, 150, TimeUnit.MILLISECONDS);
+        } catch (RejectedExecutionException ex) {
+            System.out.println("test");
         }
+//        scheduler.shutdownNow();
     }
 
 
