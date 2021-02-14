@@ -1,11 +1,12 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle;
 
-
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.Destroyable;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
@@ -45,8 +46,6 @@ public class Castle extends GameObjects implements Destroyable {
                 castleIcon.load("castle50.png");
             } else if (castleHealth <= 75) {
                 castleIcon.load("castle75.png");
-            } else if (castleHealth <= 99) {
-                castleIcon.load("castle0.png");
             }
         }
     }
@@ -113,7 +112,7 @@ public class Castle extends GameObjects implements Destroyable {
 
     public boolean isCastle(Position bombPos, GridDirection direction){
         for (Position position : posArr) {
-            if(direction == GridDirection.LEFT) {
+            if(direction == GridDirection.RIGHT) {
                 if (position.getCol() == bombPos.getCol() - 1 &&
                         position.getRow() == bombPos.getRow()) {
                     return true;

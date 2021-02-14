@@ -12,7 +12,7 @@ public class Game {
     public Game() {
     }
 
-    public void init() {
+    public void init() throws InterruptedException {
  //       Grid grid = new Grid();
 //        grid.init();
         //       MyKeyboard myKeyboard = new MyKeyboard(player1, player2);
@@ -20,7 +20,7 @@ public class Game {
 //        createObjects();
         Engine engineSelect = new Engine();
         engineSelect.init();
-//        engineSelect.startEngine();
+        engineSelect.startEngine();
 
     }
 

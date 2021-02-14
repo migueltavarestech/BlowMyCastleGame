@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.weapons;
 
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Grid;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.GridDirection;
-import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grid;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.GridDirection;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
@@ -17,7 +17,6 @@ import java.util.concurrent.*;
 public class Bomb extends GameObjects {
 
     private Picture bombIcon;
-    private Picture explosionIcon;
     private int bombAvatar = 40;
     private int bombCol;
     private int bombRow;
@@ -31,7 +30,7 @@ public class Bomb extends GameObjects {
     public Bomb() {
 
         bombCol = (int)(Math.random()*(750-250)+250);
-        bombRow = (int)(Math.random()*((700- Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
+        bombRow = (int)(Math.random()*((700-Grid.getPadding()-Grid.getWaterPadding())-(0+Grid.getPadding())));
 
         bombIcon = new Picture(bombCol,bombRow,"bombIcon.png");
         int randomCol = (int)(Math.random()*(19-6)+6);
@@ -105,8 +104,6 @@ public class Bomb extends GameObjects {
             castleList.get(castleNum).hit(15);
             System.out.println("it's a hit!");
             Music.soundBombExplosion();
-            explosionIcon = new Picture(pos.getCol(),pos.getRow(),"explosionIcon.png");
-            explosionIcon.draw();
         }
         bombIcon.delete();
     }
@@ -121,9 +118,7 @@ public class Bomb extends GameObjects {
         for (int i=0; i<2; i++) {
             if (castleList.get(i).isCastle(pos, lastDirection)) {
                 castleNum = i;
-                System.out.println("strange...");
                 return true;
-
             }
         }
         return false;
