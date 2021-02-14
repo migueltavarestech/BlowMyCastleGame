@@ -37,6 +37,7 @@ public class Wall extends GameObjects implements Destroyable {
         wallList.add(this);
         addWallPos(pos);
 //        pos.setColor(wallType.getColor())
+        Music.soundPutDownBlock();
     }
 
     /**
