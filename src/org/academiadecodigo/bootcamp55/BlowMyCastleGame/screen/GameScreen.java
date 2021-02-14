@@ -149,6 +149,7 @@ public class GameScreen extends AbstractScreen implements Screens {
         gameElements.put(newWall,players.get(nrPlayer));
         inventories.get(nrPlayer).useWall();
         setOcuppiedPos(pos);
+
     }
 
     private void setOcuppiedPos(Position pos) {

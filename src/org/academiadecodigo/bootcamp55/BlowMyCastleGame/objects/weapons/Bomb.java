@@ -6,12 +6,14 @@ import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Grids.Position;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.Player;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.GameObjects;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.castle.Castle;
+import org.academiadecodigo.bootcamp55.BlowMyCastleGame.objects.walls.Wall;
 import org.academiadecodigo.bootcamp55.BlowMyCastleGame.screen.Music;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 public class Bomb extends GameObjects {
@@ -19,13 +21,16 @@ public class Bomb extends GameObjects {
     private Picture bombIcon;
     private Picture explosionIcon;
     private int bombAvatar = 40;
+    private final static int bombDamage = 10;
     private Position pos;
     private boolean usedBomb = false;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private final ScheduledExecutorService scheduler2 = Executors.newScheduledThreadPool(1);
     private boolean hitHappened;
     private LinkedList<Castle> castleList;
+    private LinkedList<Wall> wallList;
     private int castleNum;
+    private int wallNum;
 
     public Bomb() {
 
@@ -102,12 +107,16 @@ public class Bomb extends GameObjects {
 
     public void bombHit (GridDirection lastDirection) {
         scheduler.shutdownNow();
-        if(isItAWall()){
-           // wall.hit(damage);
+        if(isItAWall(lastDirection)){
+            wallList.get(wallNum).hit(bombDamage);
+            System.out.println("It's a wall hit!");
             Music.soundBombExplosion();
+            explosionIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"explosionIcon.png");
+            explosionIcon.draw();
+            deleteExplosion();
         } else if (isItACastle(lastDirection)){
-            castleList.get(castleNum).hit(15);
-            System.out.println("it's a hit!");
+            castleList.get(castleNum).hit(bombDamage);
+            System.out.println("it's a castle hit!");
             Music.soundBombExplosion();
             explosionIcon = new Picture(Grid.columnToX(pos.getCol()),Grid.rowToY(pos.getRow()),"explosionIcon.png");
             explosionIcon.draw();
@@ -119,8 +128,14 @@ public class Bomb extends GameObjects {
         bombIcon.delete();
     }
 
-    public boolean isItAWall(){
-        // Ask wall class
+    public boolean isItAWall(GridDirection lastDirection){
+        wallList = Wall.getWallList();
+        for (Wall wall : wallList) {
+            if(wall.isWall(pos, lastDirection)){
+                wallNum = wallList.indexOf(wall);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -153,5 +168,7 @@ public class Bomb extends GameObjects {
         }
     }
 
-
+    public static int getBombDamage() {
+        return bombDamage;
+    }
 }
