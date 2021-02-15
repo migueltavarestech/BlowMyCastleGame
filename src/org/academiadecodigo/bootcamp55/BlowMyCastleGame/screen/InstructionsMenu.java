@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class InstructionsMenu extends AbstractScreen implements Screens {
 
     private Picture menu;
+    private static final String instructionsPath = "/Users/MiguelTavares/BlowMyCastleGame/resources/Pictures/instructions2.png";
 
     public InstructionsMenu(Engine engine) {
         super(engine);
@@ -32,7 +33,7 @@ public class InstructionsMenu extends AbstractScreen implements Screens {
 
     @Override
     public void show() {
-        menu = new Picture(400, 100, "resources/Pictures/instructions.png");
+        menu = new Picture(300, 100, instructionsPath);
         menu.draw();
     }
 
